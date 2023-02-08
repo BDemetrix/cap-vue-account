@@ -1,30 +1,53 @@
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <email-sign v-if="!isSigned" @signed="signIn" />
+  <email-login v-if="isSigned && !isLogged" @logged="logIn" />
+  <home-page v-if="isLogged" :firebaseConfig="firebaseConfig"/>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import EmailSign from "@/views/EmailSign.vue";
+import EmailLogin from "@/views/EmailLogin.vue";
+import HomePage from "@/views/HomePage.vue";
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  data() {
+    return {
+      isSigned: window.localStorage.getItem('isSigned'),
+      isLogged: false,
+      firebaseConfig: {
+        apiKey: "AIzaSyC3TpvymDTk1trjAGIMuZdFcLsxtjUWqFM",
+        authDomain: "cap-vue-account.firebaseapp.com",
+        databaseURL: "https://cap-vue-account-default-rtdb.europe-west1.firebasedatabase.app",
+        projectId: "cap-vue-account",
+        storageBucket: "cap-vue-account.appspot.com",
+        messagingSenderId: "494879929657",
+        appId: "1:494879929657:web:bf0babd7627127156fe4e8",
+        measurementId: "G-EMY6WBG9KX"
+      },
+    };
+  },
+  components: {
+    EmailSign,
+    EmailLogin,
+    HomePage,
+  },
+  methods: {
+    signIn(isSigned) {
+      this.isSigned = isSigned;
+    },
+    logIn(isLogged) {
+      this.isLogged = isLogged;
     }
-  }
-}
+  },
+  mounted() {
+    
+  },
+
+};
+</script>
+
+
+<style lang="scss">
 </style>
+
