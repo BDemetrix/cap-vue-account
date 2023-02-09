@@ -9,13 +9,13 @@ async function onPush(event) {
 
     await self.registration.showNotification(notification.title, {
         body: notification.body,
-        // icon: push.data.icon,
+        icon: push.data.icon,
         icon: notification.image,
         badge: notification.image,
         requireInteraction: true,
         vibrate: [200, 100, 200, 100, 200, 100, 200],
-        //data: push.data.url,
-        //data: push.data,
+        data: push.data.url,
+        data: push.data,
     })
 
     fetch(`/isDelivered?${push.fcmMessageId}`);

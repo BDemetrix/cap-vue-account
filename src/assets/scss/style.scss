@@ -70,4 +70,8 @@ body {
     border: none;
     background: #212121;
     border-radius: 8px;
+
+    &:not(:last-child) {
+        margin-bottom: 24px;
+    }
 }
