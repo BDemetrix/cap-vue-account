@@ -58,6 +58,7 @@ export default {
           // Signed in
           const user = userCredential.user;
           console.log(user);
+          alert(user.uid);
           // ...
           if (user.uid) {
             this.$emit('signed', true);
@@ -67,6 +68,7 @@ export default {
         .catch((error) => {
           console.log(error);
           window.localStorage.setItem('isSigned', 1);
+          alert(error.message)
           // const errorCode = error.code;
           // const errorMessage = error.message;
           // ..
