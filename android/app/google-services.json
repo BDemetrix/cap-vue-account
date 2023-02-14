@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "494879929657",
+    "firebase_url": "https://cap-vue-account-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cap-vue-account",
+    "storage_bucket": "cap-vue-account.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494879929657:android:49becd6d4f9993cb6fe4e8",
+        "android_client_info": {
+          "package_name": "com.example.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494879929657-2v3nre413mbf43l3jnrab2orar2o7lmp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2-70mXmFy1RJUyoI0OAdIeUs-FDjT95w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494879929657-2v3nre413mbf43l3jnrab2orar2o7lmp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

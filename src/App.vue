@@ -41,7 +41,7 @@ export default {
     }
   },
   mounted() {
-    
+    window.localStorage.setItem("fcmSigned", "");
   },
 
 };
