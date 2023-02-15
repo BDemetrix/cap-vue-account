@@ -26,6 +26,10 @@
       <button class="btn" type="submit" @click="signUp">
         Зарегистрироваться
       </button>
+
+      <button class="link" type="submit" @click="toLogin">
+        Войти
+      </button>
     </form>
   </div>
 </template>
@@ -67,13 +71,17 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-          window.localStorage.setItem('isSigned', 1);
-          alert(error.message)
-          // const errorCode = error.code;
-          // const errorMessage = error.message;
+          if ( error.code === 'auth/email-already-in-use') {
+            alert('Такой логин уже существует')
+            this.$emit('signed', true);
+            window.localStorage.setItem('isSigned', 1);
+          }
           // ..
         });
     },
+    toLogin() {
+      this.$emit('signed', true);
+    }
   },
 };
 </script>

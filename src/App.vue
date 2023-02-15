@@ -1,8 +1,8 @@
 
 <template>
   <email-sign v-if="!isSigned" @signed="signIn" />
-  <email-login v-if="isSigned && !isLogged" @logged="logIn" />
-  <home-page v-if="isLogged" :firebaseConfig="firebaseConfig"/>
+  <email-login v-if="isSigned && !isLogged" @logged="logIn" @to-sign-up="toSignUp"/>
+  <home-page v-if="isLogged" :firebaseConfig="firebaseConfig" />
 </template>
 
 <script>
@@ -13,6 +13,7 @@ import HomePage from "@/views/HomePage.vue";
 export default {
   data() {
     return {
+      // fcmSigned: window.localStorage.getItem("fcmSigned"),
       isSigned: window.localStorage.getItem('isSigned'),
       isLogged: false,
       firebaseConfig: {
@@ -38,6 +39,10 @@ export default {
     },
     logIn(isLogged) {
       this.isLogged = isLogged;
+    },
+    toSignUp(isSigned) {
+      this.isSigned = isSigned
+      window.localStorage.setItem('isSigned', '')
     }
   },
   mounted() {

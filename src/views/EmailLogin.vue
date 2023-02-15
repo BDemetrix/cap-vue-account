@@ -17,6 +17,10 @@
         v-model="user.password"
       />
       <button class="btn" type="submit" @click="logIn">Войти</button>
+
+      <button class="link" type="submit" @click="toSignUp">
+        Зарегистрироваться
+      </button>
     </form>
   </div>
 </template>
@@ -54,6 +58,10 @@ export default {
           window.localStorage.setItem('isSigned', '');
         });
     },
+
+    toSignUp() {
+      this.$emit('to-sign-up', false);
+    }
   },
 };
 </script>

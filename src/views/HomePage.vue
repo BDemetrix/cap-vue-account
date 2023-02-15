@@ -6,15 +6,38 @@
         <!-- <button class="btn" type="button" @click="push">
             {{ btnText }}
         </button> -->
-        <button class="btn" type="button" v-if="!fcmSigned" @click="registerNotifications">
+        <button
+            class="btn"
+            type="button"
+            v-if="!fcmSigned"
+            @click="registerNotifications"
+        >
             Подписаться на Push
         </button>
         <button class="btn" type="button" v-if="fcmSigned" @click="sendPush">
             Отправить Push
         </button>
 
-        <textarea rows="10" :value="token">Здесь будет токен</textarea>
-<!--         <button class="btn" type="button" @click="unSubscribe" v-if="fcmSigned">
+        <label class="label">Токен</label>
+        <textarea  class="textarea" rows="7" :value="token">Здесь будет токен</textarea>
+
+        <label class="label">Заголовок Push</label>
+        <input
+            class="input"
+            type="text"
+            placeholder="Заголовок Push"
+            autocomplete="off"
+            v-model="pushMsg.title"
+        />
+        <label class="label">Текст Push</label>
+        <textarea
+            class="textarea"
+            placeholder="Текст Push"
+            autocomplete="off"
+            v-model="pushMsg.text"
+        />
+
+        <!--         <button class="btn" type="button" @click="unSubscribe" v-if="fcmSigned">
             Отписаться
         </button> -->
     </div>
@@ -32,7 +55,11 @@ export default {
     name: "HomePage",
     data() {
         return {
-            token: '',
+            pushMsg: {
+                title: "Тестовое сообщение!",
+                text: "Тестовое сообщение. \n Кликни для перехода google.com",
+            },
+            token: "",
             fcmSigned: !!window.localStorage.getItem("fcmSigned"),
             btnText: this.fcmSigned ? "Отправить Push" : "Подписаться на Push",
             fb: initializeApp(this.firebaseConfig),
@@ -48,25 +75,26 @@ export default {
     },
     methods: {
         async push() {
-            this.fcmSigned ? (await this.sendPush()) : (await this.registerNotifications());
-        }, 
+            this.fcmSigned
+                ? await this.sendPush()
+                : await this.registerNotifications();
+        },
 
         async sendPush() {
-
-            let token = window.localStorage.getItem('token');
-            alert(token)
+            let token = window.localStorage.getItem("token");
+            alert(token);
             // token = 'fcJAjyo-Q0aVTFOlX1W0I3:APA91bE_svf-3L8z2lmpxtdFCtge4Cx0lsEqstpXmI9Xnah0y2d8qWIJ_606Gv1aKJhlRp4swoFBfj5LrKeQ9AD4d7QZadhkVZjpMeRKfmUnqzSHWk9ba3UGW0ysCajp5dov_oGP1E2c';
 
-            if(!this.fcmSigned) {
-                alert('Подписка не оформлена')
-                return
-            }
-
-            if(!token) {
-                alert('Токен не найден. Возможно подписка не оформлена.')
+            if (!this.fcmSigned) {
+                alert("Подписка не оформлена");
                 return;
             }
-            
+
+            if (!token) {
+                alert("Токен не найден. Возможно подписка не оформлена.");
+                return;
+            }
+
             window.localStorage.setItem("fcmSigned", "1");
 
             const ACCESS_TOKEN =
@@ -75,8 +103,8 @@ export default {
                 to: token,
                 direct_boot_ok: true,
                 notification: {
-                    title: "Тестовое сообщение!",
-                    body: "Тестовое сообщение. \n Кликни для перехода google.com",
+                    title: this.pushMsg.title,
+                    body: this.pushMsg.text
                 },
                 data: {
                     //icon: "https://cdn-icons-png.flaticon.com/512/8910/8910792.png",
@@ -104,7 +132,7 @@ export default {
                 })
                 .then((/* text */) => {
                     // console.log(text)
-                    alert('сообщение отправлено')
+                    alert("сообщение отправлено");
                 })
                 .catch((e) => console.log(e));
         },
@@ -112,12 +140,12 @@ export default {
         async addListeners() {
             await PushNotifications.addListener("registration", (token) => {
                 console.info("Registration token: ", token.value);
-                alert('Подписка оформлена: ' + token.value);
-                this.btnText = 'Отправить Push';
-                window.localStorage.setItem('token', token.value)
-                window.localStorage.setItem('fcmSigned', '1')
-                this.fcmSigned = true
-                this.token = token.value
+                alert("Подписка оформлена: \n" + token.value);
+                this.btnText = "Отправить Push";
+                window.localStorage.setItem("token", token.value);
+                window.localStorage.setItem("fcmSigned", "1");
+                this.fcmSigned = true;
+                this.token = token.value;
             });
 
             await PushNotifications.addListener("registrationError", (err) => {
@@ -128,9 +156,8 @@ export default {
                 "pushNotificationReceived",
                 (notification) => {
                     console.log("Push notification received: ", notification);
-                    alert('Push notification received');
-                    // alert(notification);
-                    notification.push();
+                    //alert("Push notification received");
+                    //notification.push();
                 }
             );
 
@@ -142,7 +169,7 @@ export default {
                         notification.actionId,
                         notification.inputValue
                     );
-                    alert('Push notification action performed') 
+                    alert("Push notification action performed");
                 }
             );
         },
@@ -159,11 +186,11 @@ export default {
             }
 
             await PushNotifications.register();
-
         },
 
         async getDeliveredNotifications() {
-            const notificationList = await PushNotifications.getDeliveredNotifications();
+            const notificationList =
+                await PushNotifications.getDeliveredNotifications();
             console.log("delivered notifications", notificationList);
         },
     },
@@ -171,15 +198,13 @@ export default {
         this.btnText = this.fcmSigned
             ? "Отправить Push"
             : "Подписаться на Push";
-        
+
         await this.addListeners();
     },
 };
 </script>
 
 <style scoped>
-    textarea {
-        width: 100%;
-    }
+
 </style>
 
