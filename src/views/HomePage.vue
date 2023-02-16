@@ -101,7 +101,7 @@ export default {
             const ACCESS_TOKEN =
                 "key=AAAAczkkdTk:APA91bG3gFEALwglHyMkFReUpOGmK38qQFCqJ1uerVqxP5buPJb33ZcWvB0LrTfmWks5hdjdlv6WujZxJO79-Frk6EdIcxKq6nCPCWDm36U8xlc2yoL6Ywt-Exo80njbSkHLO0mhV7GV";
             const data = {
-                to: token,
+                to: this.token,
                 direct_boot_ok: true,
                 notification: {
                     title: this.pushMsg.title,

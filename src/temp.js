@@ -7,13 +7,13 @@ const data = {
     to: token,
     direct_boot_ok: true,
     notification: {
-        title: this.pushMsg.title,
-        body: this.pushMsg.text,
+        title: 'Тестовое сообщение!',
+        body: 'Текст тестового сообщения',
         image
     },
     "headers": {
-        title: this.pushMsg.title,
-        body: this.pushMsg.text,
+        title: 'Тестовое сообщение!',
+        body: 'Текст тестового сообщения',
         image
     },
     data: {
