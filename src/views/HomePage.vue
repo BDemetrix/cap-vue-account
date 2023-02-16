@@ -57,7 +57,7 @@ export default {
         return {
             pushMsg: {
                 title: "Тестовое сообщение!",
-                text: "Тестовое сообщение. \n Кликни для перехода google.com",
+                text: "Текст сообщения. Кликни для перехода",
             },
             token: "",
             fcmSigned: !!window.localStorage.getItem("fcmSigned"),
@@ -81,9 +81,9 @@ export default {
         },
 
         async sendPush() {
-            let token = window.localStorage.getItem("token");
-            alert(token);
-            // token = 'fcJAjyo-Q0aVTFOlX1W0I3:APA91bE_svf-3L8z2lmpxtdFCtge4Cx0lsEqstpXmI9Xnah0y2d8qWIJ_606Gv1aKJhlRp4swoFBfj5LrKeQ9AD4d7QZadhkVZjpMeRKfmUnqzSHWk9ba3UGW0ysCajp5dov_oGP1E2c';
+            let token = this.token // || window.localStorage.getItem("token");
+             
+            // token = 'faFwg7VWRGenUtXbaWfvKy:APA91bGSE5mljvk5SKSvvBPrFGBs3Mspd-lrOgpiC0ljHiTjyk1M4_sgT9sWdAg0kKYxYdspwVZ0VVMEpP3yiRnH7WrIfbOzfCNXpVNeACt2cTW_UXaBtpNJEgnI1pQZavXKLP74Cpgx';
 
             if (!this.fcmSigned) {
                 alert("Подписка не оформлена");
@@ -95,33 +95,35 @@ export default {
                 return;
             }
 
+            alert(token);
             window.localStorage.setItem("fcmSigned", "1");
 
-            const image = "https://cdn-icons-png.flaticon.com/512/8910/8910792.png"
+            // const image = "https://cdn-icons-png.flaticon.com/512/8910/8910792.png"
             const ACCESS_TOKEN =
                 "key=AAAAczkkdTk:APA91bG3gFEALwglHyMkFReUpOGmK38qQFCqJ1uerVqxP5buPJb33ZcWvB0LrTfmWks5hdjdlv6WujZxJO79-Frk6EdIcxKq6nCPCWDm36U8xlc2yoL6Ywt-Exo80njbSkHLO0mhV7GV";
-            const data = {
-                to: this.token,
+           const pushMsg = this.pushMsg
+           const data = {
+                to: token,
                 direct_boot_ok: true,
                 notification: {
+                    title: pushMsg.title,
+                    body: pushMsg.text,
+                    //image
+                },
+                /* headers: {
                     title: this.pushMsg.title,
                     body: this.pushMsg.text,
                     image
-                },
-                "headers": {
-                    title: this.pushMsg.title,
-                    body: this.pushMsg.text,
-                    image
-                },
+                }, */
                 data: {
                     //icon: "https://cdn-icons-png.flaticon.com/512/8910/8910792.png",
                     url: "https://google.com/",
                 },
                 default_sound: true,
-                image,
-                fcm_options : {
-                    image
-                }
+                //image,
+                /* fcm_options : {
+                    //image
+                } */
             };
 
             fetch("https://fcm.googleapis.com/fcm/send", {
@@ -142,8 +144,8 @@ export default {
                     console.log(response);
                     return response.json();
                 })
-                .then((/* text */) => {
-                    // console.log(text)
+                .then((text) => {
+                    console.log(text)
                     alert("сообщение отправлено");
                 })
                 .catch((e) => console.log(e));
