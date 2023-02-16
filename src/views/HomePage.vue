@@ -71,7 +71,7 @@ export default {
         firebaseConfig: {
             type: Object,
             required: true,
-        },
+        }
     },
     methods: {
         async push() {
@@ -140,7 +140,7 @@ export default {
         async addListeners() {
             await PushNotifications.addListener("registration", (token) => {
                 console.info("Registration token: ", token.value);
-                alert("Подписка оформлена: \n" + token.value);
+                // alert("Подписка оформлена: \n" + token.value);
                 this.btnText = "Отправить Push";
                 window.localStorage.setItem("token", token.value);
                 window.localStorage.setItem("fcmSigned", "1");

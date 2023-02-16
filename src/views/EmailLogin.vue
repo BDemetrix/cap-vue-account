@@ -21,6 +21,16 @@
       <button class="link" type="submit" @click="toSignUp">
         Зарегистрироваться
       </button>
+
+      <!-- <label>
+        <input
+        @change="reme"
+        class="checkbox"
+        type="checkbox"
+        v-model="remember"
+        />
+      </label> -->
+      
     </form>
   </div>
 </template>
@@ -37,6 +47,7 @@ export default {
         password: "",
         repPassword: "",
       },
+      remember: null,
     };
   },
   methods: {
@@ -61,7 +72,11 @@ export default {
 
     toSignUp() {
       this.$emit('to-sign-up', false);
-    }
+    },
+
+    /* rememberMe() {
+
+    } */
   },
 };
 </script>
