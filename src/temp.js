@@ -1,18 +1,30 @@
 let token = 'fcJAjyo-Q0aVTFOlX1W0I3:APA91bE_svf-3L8z2lmpxtdFCtge4Cx0lsEqstpXmI9Xnah0y2d8qWIJ_606Gv1aKJhlRp4swoFBfj5LrKeQ9AD4d7QZadhkVZjpMeRKfmUnqzSHWk9ba3UGW0ysCajp5dov_oGP1E2c';
 
+const image = "https://cdn-icons-png.flaticon.com/512/8910/8910792.png"
 const ACCESS_TOKEN =
     "key=AAAAczkkdTk:APA91bG3gFEALwglHyMkFReUpOGmK38qQFCqJ1uerVqxP5buPJb33ZcWvB0LrTfmWks5hdjdlv6WujZxJO79-Frk6EdIcxKq6nCPCWDm36U8xlc2yoL6Ywt-Exo80njbSkHLO0mhV7GV";
 const data = {
     to: token,
     direct_boot_ok: true,
     notification: {
-        title: "Тестовое сообщение!",
-        body: "Тестовое сообщение. \n Кликни для перехода google.com",
+        title: this.pushMsg.title,
+        body: this.pushMsg.text,
+        image
+    },
+    "headers": {
+        title: this.pushMsg.title,
+        body: this.pushMsg.text,
+        image
     },
     data: {
         //icon: "https://cdn-icons-png.flaticon.com/512/8910/8910792.png",
         url: "https://google.com/",
     },
+    default_sound: true,
+    image,
+    fcm_options: {
+        image
+    }
 };
 
 setTimeout(() => {

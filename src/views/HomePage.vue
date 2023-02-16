@@ -97,6 +97,7 @@ export default {
 
             window.localStorage.setItem("fcmSigned", "1");
 
+            const image = "https://cdn-icons-png.flaticon.com/512/8910/8910792.png"
             const ACCESS_TOKEN =
                 "key=AAAAczkkdTk:APA91bG3gFEALwglHyMkFReUpOGmK38qQFCqJ1uerVqxP5buPJb33ZcWvB0LrTfmWks5hdjdlv6WujZxJO79-Frk6EdIcxKq6nCPCWDm36U8xlc2yoL6Ywt-Exo80njbSkHLO0mhV7GV";
             const data = {
@@ -104,12 +105,23 @@ export default {
                 direct_boot_ok: true,
                 notification: {
                     title: this.pushMsg.title,
-                    body: this.pushMsg.text
+                    body: this.pushMsg.text,
+                    image
+                },
+                "headers": {
+                    title: this.pushMsg.title,
+                    body: this.pushMsg.text,
+                    image
                 },
                 data: {
                     //icon: "https://cdn-icons-png.flaticon.com/512/8910/8910792.png",
                     url: "https://google.com/",
                 },
+                default_sound: true,
+                image,
+                fcm_options : {
+                    image
+                }
             };
 
             fetch("https://fcm.googleapis.com/fcm/send", {
