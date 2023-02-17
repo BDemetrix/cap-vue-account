@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
 //import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth"
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js"
 //import "firebase/database"
 //import "firebase/messaging"
 //import "firebase/storage"
@@ -12,8 +12,8 @@ const firebaseConfig = {
     projectId: "cap-vue-account",
     storageBucket: "cap-vue-account.appspot.com",
     messagingSenderId: "494879929657",
-    appId: "1:494879929657:web:bf0babd7627127156fe4e8",
-    measurementId: "G-EMY6WBG9KX"
+    appId: "1:494879929657:web:27ef193d242b67576fe4e8",
+    measurementId: "G-0ZFVX3Z8FC"
 };
 
 // Initialize Firebase
