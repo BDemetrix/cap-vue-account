@@ -35,7 +35,8 @@
 </template>
 
 <script>
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 
 export default {
   name: "EmailSignin",
@@ -55,16 +56,17 @@ export default {
         return;
       }
 
-      const auth = getAuth();
-
-      createUserWithEmailAndPassword(auth, this.user.email, this.user.password)
-        .then((userCredential) => {
+      const user = this.user;
+      FirebaseAuthentication.createUserWithEmailAndPassword({
+        email: user.email,
+        password: user.password,
+      })
+      .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
           console.log(user);
-          alert(user.uid);
           // ...
-          if (user.uid) {
+          if (user) {
             this.$emit('signed', true);
             window.localStorage.setItem('isSigned', 1);
           }

@@ -44,8 +44,8 @@
 </template>
 
 <script>
-import { initializeApp } from "firebase/app";
-//import { getMessaging, getToken } from "firebase/messaging";
+// import { initializeApp } from "firebase/app";
+// import { getMessaging, getToken } from "firebase/messaging";
 import { PushNotifications } from "@capacitor/push-notifications";
 
 // const fb = initializeApp(firebaseConfig);
@@ -62,7 +62,7 @@ export default {
             token: "",
             fcmSigned: !!window.localStorage.getItem("fcmSigned"),
             btnText: this.fcmSigned ? "Отправить Push" : "Подписаться на Push",
-            fb: initializeApp(this.firebaseConfig),
+            // fb: initializeApp(this.firebaseConfig),
             PUBLIC_VAPID_KEY:
                 "BP18qEecjZuO4Yi_xtG6jlmqk7EHGCqpc46zH6cuanWlqL7nXpKyfPJmmToFqdxD55rENrF_STkXjoX4U4KOxJw",
         };

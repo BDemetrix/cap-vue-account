@@ -47,9 +47,15 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 Установочный файл для iOS лежит в дереве проекта в  App/App/Product/App.app
 его необходимо сжать в *.zip и переиновать в *.ipa
 
+
+### Аутентификация в firebase из capacitor плагина
+https://www.npmjs.com/package/@capacitor-firebase/authentication
+
 ### Push 
 https://capacitorjs.com/docs/apis/push-notifications
 
 https://firebase.google.com/docs/cloud-messaging?hl=ru
 #### REST Resource: projects.messages
 https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages?hl=ru#ApnsConfig
+
+

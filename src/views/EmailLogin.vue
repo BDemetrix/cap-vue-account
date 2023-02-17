@@ -36,7 +36,8 @@
 </template>
 
 <script>
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+//import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 
 export default {
   name: "EmailLogin",
@@ -52,9 +53,12 @@ export default {
   },
   methods: {
     logIn() {
-      const auth = getAuth();
-
-      signInWithEmailAndPassword(auth, this.user.email, this.user.password)
+      
+      const user = this.user;
+      FirebaseAuthentication.signInWithEmailAndPassword({
+        email: user.email,
+        password: user.password,
+      })
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
