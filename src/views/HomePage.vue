@@ -19,7 +19,7 @@
         </button>
 
         <label class="label">Токен</label>
-        <textarea  class="textarea" rows="7" :value="token">Здесь будет токен</textarea>
+        <textarea  class="textarea" rows="7" ref="textarea" :value="token">Здесь будет токен</textarea>
 
         <label class="label">Заголовок Push</label>
         <input
@@ -81,7 +81,7 @@ export default {
         },
 
         async sendPush() {
-            let token = this.token // || window.localStorage.getItem("token");
+            let token = this.$refs.textarea.value.trim() // || window.localStorage.getItem("token");
              
             // token = 'faFwg7VWRGenUtXbaWfvKy:APA91bGSE5mljvk5SKSvvBPrFGBs3Mspd-lrOgpiC0ljHiTjyk1M4_sgT9sWdAg0kKYxYdspwVZ0VVMEpP3yiRnH7WrIfbOzfCNXpVNeACt2cTW_UXaBtpNJEgnI1pQZavXKLP74Cpgx';
 
