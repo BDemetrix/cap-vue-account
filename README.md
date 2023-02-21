@@ -79,15 +79,24 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 ### Аутентификация в firebase из capacitor плагина
 https://www.npmjs.com/package/@capacitor-firebase/authentication
 
-### Push 
+### Push-уведомления
 https://capacitorjs.com/docs/apis/push-notifications
 Выполнить действия
 https://i.stack.imgur.com/FbQDL.png
 
-
 https://firebase.google.com/docs/cloud-messaging?hl=ru
-#### REST Resource: projects.messages
-https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages?hl=ru#ApnsConfig
+
+
+### Вход по биометрии
+Capacitor Native Biometric
+`npm i capacitor-native-biometric`
+https://www.npmjs.com/package/capacitor-native-biometric
+
+
+
+#### REST Resource: projects.messages+
+Сообщение для отправки облачной службой обмена сообщениями Firebase
+https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages?hl=ru
 
 
 ### Ошибки 
@@ -97,6 +106,14 @@ https://stackoverflow.com/questions/70760326/flutter-on-ios-redefinition-of-modu
 ! При сборке capacitorjs или другим фреймворком НЕ ДОБАВЛЯТЬ в Xcode > File > Add Packages (описано в инструкции по предыдущей ссылке). Добавление приводит к ошибке `Redefinition of module 'Firebase'`
 
 2. No valid 'aps-environment' entitlement string found for application on app store
+https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
+
+
+### Сертификаты для Apple
+https://developer.apple.com/
+Здесь написано какие сертификаты бывают и зачем нужны.
+Надо их получить.
+https://fmaxx.github.io/ios/provisioning/2017/08/20/ios-provisioning-part-1.html
 https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
 
 

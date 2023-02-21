@@ -5,26 +5,29 @@ const ACCESS_TOKEN =
     "key=AAAAczkkdTk:APA91bG3gFEALwglHyMkFReUpOGmK38qQFCqJ1uerVqxP5buPJb33ZcWvB0LrTfmWks5hdjdlv6WujZxJO79-Frk6EdIcxKq6nCPCWDm36U8xlc2yoL6Ywt-Exo80njbSkHLO0mhV7GV";
 const data = {
     to: token,
-    direct_boot_ok: true,
-    notification: {
-        title: 'Тестовое сообщение!',
-        body: 'Текст тестового сообщения',
-        image
+    "notification": { //object(Notification)
+        "title": "Тест!",
+        "body": "Текст тестового сообщения.",
+        //"image": "string"
     },
-    "headers": {
-        title: 'Тестовое сообщение!',
-        body: 'Текст тестового сообщения',
-        image
+    "android": { //object(AndroidConfig)
+        "priority": "HIGH", //enum(AndroidMessagePriority) NORMAL HIGH
+        "restricted_package_name": "com.example.app",
+        "data": { // Произвольная полезная нагрузка ("ключ": "значение")
+        },
+        "notification": { //object(AndroidNotification)
+            "title": "Тест Android",
+            "body": "Текст сообщения Android",
+            // "icon": string,
+            "color": "#ee0000",
+            "sound": "default",
+            // "click_action": '', // Действие, связанное с кликом пользователя по уведомлению
+            "notification_priority": "PRIORITY_MAX",
+        },
+        "fcm_options": { // object(AndroidFcmOptions)
+        },
+         "direct_boot_ok": true
     },
-    data: {
-        //icon: "https://cdn-icons-png.flaticon.com/512/8910/8910792.png",
-        url: "https://google.com/",
-    },
-    default_sound: true,
-    image,
-    fcm_options: {
-        image
-    }
 };
 
 setTimeout(() => {
@@ -49,3 +52,51 @@ setTimeout(() => {
         .then((text) => console.log(text))
         .catch((e) => console.log(e));
 }, 5000);
+
+
+
+// 
+
+const fcm_msg = {
+    "name": 'string', //Только вывод. Идентификатор отправленного сообщения в формате projects/*/messages/{message_id} .
+    "data": { // Произвольная полезная нагрузка ("ключ": "значение")
+    },
+    "notification": { //object(Notification)
+        "title": "Тест!",
+        "body": "Текст тестового сообщения.",
+        //"image": "string"
+    },
+    "android": { //object(AndroidConfig)
+        "priority": "HIGH", //enum(AndroidMessagePriority) NORMAL HIGH
+        "restricted_package_name": "com.example.app",
+        "data": { // Произвольная полезная нагрузка ("ключ": "значение")
+        },
+        "notification": { //object(AndroidNotification)
+            "title": "Тест Android",
+            "body": "Текст сообщения Android",
+            // "icon": string,
+            "color": "#ee0000",
+            "sound": "default",
+            // "click_action": '', // Действие, связанное с кликом пользователя по уведомлению
+            "notification_priority": "PRIORITY_MAX",
+        },
+        "fcm_options": { // object(AndroidFcmOptions)
+        },
+        "direct_boot_ok": boolean
+    },
+    "webpush": {
+        //object(WebpushConfig)
+    },
+    "apns": {
+        //object(ApnsConfig)
+    },
+    "fcm_options": {
+        //object(FcmOptions)
+    },
+
+    // Union field target can be only one of the following:
+    "token": "string", //
+    "topic": "string", // тема (группа сообщений)
+    "condition": "string"
+    // End of list of possible types for union field target.
+}

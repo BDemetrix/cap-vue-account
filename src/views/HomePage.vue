@@ -19,7 +19,7 @@
         </button>
 
         <label class="label">Токен</label>
-        <textarea  class="textarea" rows="7" ref="textarea" :value="token">Здесь будет токен</textarea>
+        <textarea  class="textarea" rows="7" ref="textarea" >Здесь будет токен</textarea>
 
         <label class="label">Заголовок Push</label>
         <input
@@ -56,7 +56,7 @@ export default {
     data() {
         return {
             pushMsg: {
-                title: "Тестовое сообщение!",
+                title: "Тест!",
                 text: "Текст сообщения. Кликни для перехода",
             },
             token: "",
@@ -104,26 +104,29 @@ export default {
            const pushMsg = this.pushMsg
            const data = {
                 to: token,
-                direct_boot_ok: true,
-                notification: {
-                    title: pushMsg.title,
-                    body: pushMsg.text,
-                    //image
+                "notification": { //object(Notification)
+                    "title": pushMsg.title, // "Тест!",
+                    "body": pushMsg.text, //"Текст тестового сообщения.",
+                    // "image": image
                 },
-                /* headers: {
-                    title: this.pushMsg.title,
-                    body: this.pushMsg.text,
-                    image
-                }, */
-                data: {
-                    //icon: "https://cdn-icons-png.flaticon.com/512/8910/8910792.png",
-                    url: "https://google.com/",
+                "android": { //object(AndroidConfig)
+                    "priority": "HIGH", //enum(AndroidMessagePriority) NORMAL HIGH
+                    "restricted_package_name": "com.example.app",
+                    "data": { // Произвольная полезная нагрузка ("ключ": "значение")
+                    },
+                    "notification": { //object(AndroidNotification)
+                        "title": (pushMsg.title + "Android"),
+                        "body": (pushMsg.text + "Android"),
+                        // "icon": string,
+                        "color": "#ee0000",
+                        "sound": "default",
+                        // "click_action": '', // Действие, связанное с кликом пользователя по уведомлению
+                        "notification_priority": "PRIORITY_MAX",
+                    },
+                    "fcm_options": { // object(AndroidFcmOptions)
+                    },
+                    "direct_boot_ok": true
                 },
-                default_sound: true,
-                //image,
-                /* fcm_options : {
-                    //image
-                } */
             };
 
             fetch("https://fcm.googleapis.com/fcm/send", {
@@ -159,7 +162,7 @@ export default {
                 window.localStorage.setItem("token", token.value);
                 window.localStorage.setItem("fcmSigned", "1");
                 this.fcmSigned = true;
-                this.token = token.value;
+                this.token = this.$refs.textarea.value = token.value;
             });
 
             await PushNotifications.addListener("registrationError", (err) => {

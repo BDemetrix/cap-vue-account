@@ -1,8 +1,8 @@
 
 <template>
-  <email-sign v-if="!isSigned" @signed="signIn" />
-  <email-login v-if="isSigned && !isLogged" @logged="logIn" @to-sign-up="toSignUp"/>
-  <home-page v-if="isLogged" :firebaseConfig="firebaseConfig" />
+  <email-sign v-show="!isSigned" @signed="signIn" />
+  <email-login v-show="isSigned && !isLogged" @logged="logIn" @to-sign-up="toSignUp"/>
+  <home-page v-show="isLogged" :firebaseConfig="firebaseConfig" />
 </template>
 
 <script>
