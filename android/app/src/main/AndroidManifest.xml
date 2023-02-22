@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.app">
-    
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
 
     <application
         android:allowBackup="true"
@@ -41,7 +45,7 @@
 
         <!--
         [START firebase_service] -->
-       <!--  <service если используется плагин, эти настройки не нужны
+        <!--  <service если используется плагин, эти настройки не нужны
             android:name=".java.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
@@ -51,8 +55,4 @@
         <!-- [END firebase_service] -->
     </application>
 
-    <!-- Permissions -->
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

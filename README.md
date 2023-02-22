@@ -24,6 +24,19 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+### Среда разработки Android
+Для разработки следуетс установить SDK Tools
+Tools > SDK Manager or click SDK Manager
+https://developer.android.com/studio/intro/update#sdk-manager
+https://developer.android.com/studio/releases/platform-tools#downloads
+
+Подключение к устройству по USB или Wi-Fi 
+https://www.youtube.com/watch?v=JTHhqfooUuM
+Необходимо разрешить отладку и установку
+
+
+Если не находятся команды в командной строке, надо добавить системные переменные
+PATH: C:\Users\Android\Sdk\tools;C:\Users\Android\Sdk\platform-tools
 
 ### Окружение для iOS
 https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
@@ -38,6 +51,27 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 
 Выполнить:
 `npx cap sync ios`
+
+
+### Тестировать приложение на реальном iPhone
+https://www.youtube.com/watch?v=e3svWl96dj0
+
+
+
+### Добввить переменную среды PATH для VS Code
+https://habr.com/ru/company/microsoft/blog/262523/
+Для MacOS
+`code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}`
+
+если графическая оболочка VS Code кривая необходимо вполнить в терминале 
+`code --disable-gpu`
+Затем зайти в настройки VS Code и:
+Open the Command Palette (⇧⌘P).
+Run the Preferences: Configure Runtime Arguments command.
+This command will open a argv.json file to configure runtime arguments. You might see some default arguments there already.
+Add "disable-hardware-acceleration": true.
+Restart VS Code.
+
 
 Ошибка:
 [error] xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer

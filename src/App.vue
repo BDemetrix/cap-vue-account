@@ -9,6 +9,7 @@
 import EmailSign from "@/views/EmailSign.vue";
 import EmailLogin from "@/views/EmailLogin.vue";
 import HomePage from "@/views/HomePage.vue";
+import { NativeBiometric } from "capacitor-native-biometric";
 
 export default {
   data() {
@@ -43,10 +44,45 @@ export default {
     toSignUp(isSigned) {
       this.isSigned = isSigned
       window.localStorage.setItem('isSigned', '')
-    }
+    },
+
+    async performBiometricVerificatin() {
+      const result = await NativeBiometric.isAvailable();
+
+      if (!result.isAvailable) {
+        alert('Биометри не поддерживается')
+        return
+      }
+
+      //const isFaceID = result.biometryType == BiometryType.FACE_ID;
+      //console.log({isFaceID})
+      alert('Тип биоменрии: ' + result.biometryType)
+
+      const verified = await NativeBiometric.verifyIdentity({
+        reason: "For easy log in",
+        title: "Log in",
+        subtitle: "Maybe add subtitle here?",
+        description: "Maybe a description too?",
+      })
+        .then(() => true)
+        .catch(() => false);
+
+      if (!verified) {
+        alert('Биометри не идентифицирована')
+        return
+      }
+
+      const credentials = await NativeBiometric.getCredentials({
+        server: "www.example.com",
+      });
+
+      console.log(credentials)
+      alert('Биометри доступна')
+    },
   },
   mounted() {
-    window.localStorage.setItem("fcmSigned", "");
+    window.localStorage.setItem("fcmSigned", "")
+    this.performBiometricVerificatin()
   },
 
 };
