@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
 import '@/assets/scss/style.scss'
-// import router from './router'
-// import store from './store'
+import router from '@/router/router'
+import store from '@/store/store'
 
 /* import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth"
@@ -24,4 +24,4 @@ const fb = initializeApp(firebaseConfig)
 const auth = getAuth(fb)
 console.log(auth) */
 
-createApp(App).mount('#app')
+createApp(App).use(router).use(store).mount('#app')

@@ -21,16 +21,21 @@ npm run lint
 ```
 
 
+### Для синхронизации плагинов vuex и vue-router 
+надо установить https://www.npmjs.com/package/vuex-router-sync
+`npm i vuex-router-sync`
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-### Среда разработки Android
+### Среда разработки Android (тестировать на устройстве)
 Для разработки следуетс установить SDK Tools
 Tools > SDK Manager or click SDK Manager
 https://developer.android.com/studio/intro/update#sdk-manager
 https://developer.android.com/studio/releases/platform-tools#downloads
 
 Подключение к устройству по USB или Wi-Fi 
+https://developer.android.com/studio/command-line/adb
 https://www.youtube.com/watch?v=JTHhqfooUuM
 Необходимо разрешить отладку и установку
 
@@ -81,6 +86,7 @@ Restart VS Code.
 
 Установочный файл для iOS лежит в дереве проекта в  App/App/Product/App.app
 его необходимо сжать в *.zip и переиновать в *.ipa
+
 
 
 ### Подключение firebase

@@ -44,15 +44,11 @@
 </template>
 
 <script>
-// import { initializeApp } from "firebase/app";
-// import { getMessaging, getToken } from "firebase/messaging";
 import { PushNotifications } from "@capacitor/push-notifications";
-
-// const fb = initializeApp(firebaseConfig);
-/* const PUBLIC_VAPID_KEY = "BP18qEecjZuO4Yi_xtG6jlmqk7EHGCqpc46zH6cuanWlqL7nXpKyfPJmmToFqdxD55rENrF_STkXjoX4U4KOxJw"; */
+// import { mapActions } from "vuex";
 
 export default {
-    name: "HomePage",
+    name: "PushPage",
     data() {
         return {
             pushMsg: {
@@ -62,18 +58,10 @@ export default {
             token: "",
             fcmSigned: !!window.localStorage.getItem("fcmSigned"),
             btnText: this.fcmSigned ? "Отправить Push" : "Подписаться на Push",
-            // fb: initializeApp(this.firebaseConfig),
-            PUBLIC_VAPID_KEY:
-                "BP18qEecjZuO4Yi_xtG6jlmqk7EHGCqpc46zH6cuanWlqL7nXpKyfPJmmToFqdxD55rENrF_STkXjoX4U4KOxJw",
         };
     },
-    props: {
-        firebaseConfig: {
-            type: Object,
-            required: true,
-        }
-    },
     methods: {
+        // ...mapActions(''),
         async push() {
             this.fcmSigned
                 ? await this.sendPush()
@@ -81,9 +69,7 @@ export default {
         },
 
         async sendPush() {
-            let token = this.$refs.textarea.value.trim() // || window.localStorage.getItem("token");
-             
-            // token = 'faFwg7VWRGenUtXbaWfvKy:APA91bGSE5mljvk5SKSvvBPrFGBs3Mspd-lrOgpiC0ljHiTjyk1M4_sgT9sWdAg0kKYxYdspwVZ0VVMEpP3yiRnH7WrIfbOzfCNXpVNeACt2cTW_UXaBtpNJEgnI1pQZavXKLP74Cpgx';
+            let token = this.$refs.textarea.value.trim()
 
             if (!this.fcmSigned) {
                 alert("Подписка не оформлена");
@@ -95,14 +81,13 @@ export default {
                 return;
             }
 
-            alert(token);
+            console.log(token);
             window.localStorage.setItem("fcmSigned", "1");
 
-            // const image = "https://cdn-icons-png.flaticon.com/512/8910/8910792.png"
             const ACCESS_TOKEN =
                 "key=AAAAczkkdTk:APA91bG3gFEALwglHyMkFReUpOGmK38qQFCqJ1uerVqxP5buPJb33ZcWvB0LrTfmWks5hdjdlv6WujZxJO79-Frk6EdIcxKq6nCPCWDm36U8xlc2yoL6Ywt-Exo80njbSkHLO0mhV7GV";
-           const pushMsg = this.pushMsg
-           const data = {
+            const pushMsg = this.pushMsg
+            const data = {
                 to: token,
                 "notification": { //object(Notification)
                     "title": pushMsg.title, // "Тест!",
@@ -157,7 +142,6 @@ export default {
         async addListeners() {
             await PushNotifications.addListener("registration", (token) => {
                 console.info("Registration token: ", token.value);
-                // alert("Подписка оформлена: \n" + token.value);
                 this.btnText = "Отправить Push";
                 window.localStorage.setItem("token", token.value);
                 window.localStorage.setItem("fcmSigned", "1");

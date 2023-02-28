@@ -23,11 +23,12 @@
         autocomplete="off"
         v-model="user.repPassword"
       />
-      <button class="btn" type="submit" @click="signUp">
+      <button class="btn" type="submit" @click="subscribe">
         Зарегистрироваться
       </button>
 
-      <button class="link" type="submit" @click="toLogin">
+      <div class="center">Уже есть кабинет?</div>
+      <button class="link" type="button" @click="toLogin">
         Войти
       </button>
     </form>
@@ -35,8 +36,7 @@
 </template>
 
 <script>
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
+import { mapActions, mapMutations } from "vuex";
 
 export default {
   name: "EmailSignin",
@@ -50,39 +50,17 @@ export default {
     };
   },
   methods: {
-    signUp() {
+    ...mapActions(['signUp']),
+    ...mapMutations(['updateSigned']),
+    subscribe() {
       if (this.user.password !== this.user.repPassword) {
         alert("пароли не совпадают!");
         return;
       }
-
-      const user = this.user;
-      FirebaseAuthentication.createUserWithEmailAndPassword({
-        email: user.email,
-        password: user.password,
-      })
-      .then((userCredential) => {
-          // Signed in
-          const user = userCredential.user;
-          console.log(user);
-          // ...
-          if (user) {
-            this.$emit('signed', true);
-            window.localStorage.setItem('isSigned', 1);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          if ( error.code === 'auth/email-already-in-use') {
-            alert('Такой логин уже существует')
-            this.$emit('signed', true);
-            window.localStorage.setItem('isSigned', 1);
-          }
-          // ..
-        });
+      this.signUp(this.user)
     },
     toLogin() {
-      this.$emit('signed', true);
+      this.updateSigned('1')
     }
   },
 };
