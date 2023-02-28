@@ -157,3 +157,6 @@ https://fmaxx.github.io/ios/provisioning/2017/08/20/ios-provisioning-part-1.html
 https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
 
 
+### Релизу в App Store
+https://habr.com/ru/company/touchinstinct/blog/341858/
+https://habr.com/ru/company/touchinstinct/blog/345336/
