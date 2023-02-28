@@ -39,9 +39,12 @@ https://developer.android.com/studio/command-line/adb
 https://www.youtube.com/watch?v=JTHhqfooUuM
 Необходимо разрешить отладку и установку
 
-
 Если не находятся команды в командной строке, надо добавить системные переменные
-PATH: C:\Users\Android\Sdk\tools;C:\Users\Android\Sdk\platform-tools
+PATH: C:/Users/Android/Sdk/tools;C:/Users/Android/Sdk/platform-tools
+
+Чтобы создать установочный файл надо воспользоваться пунктом меню Build
+Готовый *.apk лежит здесь:
+android/app/build/outputs/apk/debug/
 
 ### Окружение для iOS
 https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
@@ -60,6 +63,9 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 
 ### Тестировать приложение на реальном iPhone
 https://www.youtube.com/watch?v=e3svWl96dj0
+
+Файл для установки лежит в инспекторе файлов Xcode в ProjectName/Products/ProjectName.app
+Кликнуть по нему праввой кнопкой, выбрать Show File Inspector, скопировать в другую директорию, сжать в zip, изменить расширение в ipa
 
 
 
@@ -155,6 +161,11 @@ https://developer.apple.com/
 Надо их получить.
 https://fmaxx.github.io/ios/provisioning/2017/08/20/ios-provisioning-part-1.html
 https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
+
+
+
+### Публикация приложения в Google Play
+https://habr.com/ru/company/livetyping/blog/326874/
 
 
 ### Релизу в App Store
