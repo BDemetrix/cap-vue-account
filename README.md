@@ -114,7 +114,7 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 
 
 ### При обновлении проекта из репы лили после внесения изменений 
-Если добавлялись/обновлялись пакеты
+Если добавлялись/обновлялись пакеты (видно по изменениям в package.json)
 `npm i`
 
 необходимо выполнить 
@@ -171,3 +171,88 @@ https://habr.com/ru/company/livetyping/blog/326874/
 ### Релизу в App Store
 https://habr.com/ru/company/touchinstinct/blog/341858/
 https://habr.com/ru/company/touchinstinct/blog/345336/
+
+
+
+## Создание нового проекта
+
+### 1. Установить vue
+https://v3.ru.vuejs.org/ru/guide/installation.html#cli
+
+$ `npm install -g @vue/cli`
+$ `vue create <project-name>` 
+
+Ручная настройка
+ ◉ Babel
+ ◉ Router
+ ◉ Vuex
+ ◉ CSS Pre-processors
+ ◉ Linter / Formatter
+
+Use history mode for router? Y
+
+### 2. Подключение стилей 
+ В main.js import '@/assets/scss/style.scss'
+
+ Желательно хранить стили компонентоа в отдельных файлах 
+ и подключать их в style.scss через @import
+
+
+ ### 3. Настройка PWA во Vue (при необходимости) 
+https://cli.vuejs.org/core-plugins/pwa.html
+https://webdevblog.ru/sozdanie-pwa-s-pomoshhju-vue-js/
+Чтобы переопределить значения по умолчанию в манифесте нашего веб-приложения, нужно настроить файл vue.config.js в корне нашего проекта.
+
+Если вы хотите превратить существующий проект Vue в PWA, для этого можно легко установить плагин самостоятельно. Команда для установки плагина PWA (при условии, что у вас уже установлен Vue CLI):
+`vue add pwa`
+
+Добавляемый этим плагином service worker включается только в production окружении.
+При необходимости протестировать service worker локально, соберите приложение и запустите простой HTTP-сервер из каталога сборки. Рекомендуется использовать браузер в инкогнито-режиме для избежания осложнений с кэшем вашего браузера.
+Для работы в браузере на локальном HTTP-сервере надо добавить flag
+chrome://flags/#unsafely-treat-insecure-origin-as-secure
+для url, на котором сервер открывает приложение. Пример: http://10.0.3.10:8003
+
+
+Для запуска на локальном сервере эта команда будет запустить оба процесса в одной строке:
+`npm run build && npx http-server dist`
+
+
+### 4. Для PWA или/и гибридного приложения сгенерировать и заменить иконки
+<details><summary>Список иконок в /public/img/icons/</summary>
+
+        1. android-chrome-192x192.png
+        1. android-chrome-512x512.png
+        1. android-chrome-maskable-192x192.png
+        1. android-chrome-maskable-512x512.png
+        1. apple-touch-icon-60x60.png
+        1. apple-touch-icon-76x76.png
+        1. apple-touch-icon-120x120.png
+        1. apple-touch-icon-152x152.png
+        1. apple-touch-icon-180x180.png
+        1. apple-touch-icon.png
+        1. favicon-16x16.png
+        1. favicon-32x32.png
+        1. msapplication-icon-144x144.png
+        1. mstile-150x150.png
+        1. safari-pinned-tab.svg
+
+</details>
+
+
+### 5. Установить для Vue https://capacitorjs.com/solution/vue согласно инструкциям:
+
+`npm install @capacitor/cli @capacitor/core `
+`npx cap init`
+
+`npm install @capacitor/ios @capacitor/android `
+`npx cap add ios`
+`npx cap add android`
+
+если надо использовать код и для web
+https://capacitorjs.com/docs/web
+`npx cap add web`
+
+Устанавливаем дополнительные зависимости (о них пишут ворнинги в консоли)
+
+
+
