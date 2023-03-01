@@ -47,16 +47,16 @@ Tools > SDK Manager or click SDK Manager
 https://developer.android.com/studio/intro/update#sdk-manager
 https://developer.android.com/studio/releases/platform-tools#downloads
 
-Подключение к устройству по USB или Wi-Fi 
-https://developer.android.com/studio/command-line/adb
-https://www.youtube.com/watch?v=JTHhqfooUuM
+Подключение к устройству по USB или Wi-Fi  
+https://developer.android.com/studio/command-line/adb  
+https://www.youtube.com/watch?v=JTHhqfooUuM  
 Необходимо разрешить отладку и установку
 
-Если не находятся команды в командной строке, надо добавить системные переменные
+Если не находятся команды в командной строке, надо добавить системные переменные  
 PATH: C:/Users/Android/Sdk/tools;C:/Users/Android/Sdk/platform-tools
 
-Чтобы создать установочный файл надо воспользоваться пунктом меню Build
-Готовый *.apk лежит здесь:
+Чтобы создать установочный файл надо воспользоваться пунктом меню Build  
+Готовый *.apk лежит здесь:  
 android/app/build/outputs/apk/debug/
 
 
@@ -125,18 +125,18 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/and
 https://console.firebase.google.com/project/cap-vue-account/settings/general/ios:com.example.app?hl=ru
 ! При сборке capacitorjs или другим фреймворком НЕ ДОБАВЛЯТЬ в Xcode > File > Add Packages (описано в инструкции по предыдущей ссылке). Добавление приводит к ошибке `Redefinition of module 'Firebase'`
 
-! Для отправления пушей череза firebase для устройств Apple
+! Для отправления пушей через firebase для устройств Apple  
 необходимо получение ключа (APNs Authentication Key) и сертификатов (APNs Certificates) 
 и добавление их в консоль firebase
 
 
 ### При обновлении проекта из репы или после внесения изменений 
 Если добавлялись/обновлялись пакеты (видно по изменениям в package.json)
-`npm i`
+```npm i```
 
 необходимо выполнить 
-`npm run build`
-`npx cap sync`
+```npm run build```
+```npx cap sync```
 
 
 
@@ -149,15 +149,15 @@ https://capacitorjs.com/docs/apis/push-notifications
 Выполнить действия
 https://i.stack.imgur.com/FbQDL.png
 
-https://firebase.google.com/docs/cloud-messaging?hl=ru
+https://firebase.google.com/docs/cloud-messaging?hl=ru  
 
-Настройка доступов для отправления пушей осуществляется в консоли firebase
+Настройка доступов для отправления пушей осуществляется в консоли firebase  
 Project settings -> Cloud Messaging
 
 
 ### Вход по биометрии
 Capacitor Native Biometric  
-`npm i capacitor-native-biometric`
+```npm i capacitor-native-biometric```
 https://www.npmjs.com/package/capacitor-native-biometric
 
 
@@ -184,11 +184,12 @@ https://developer.apple.com/
 https://fmaxx.github.io/ios/provisioning/2017/08/20/ios-provisioning-part-1.html  
 https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
 
-### Релизу в App Store
+### Релиз в App Store
 https://habr.com/ru/company/touchinstinct/blog/341858/
 https://habr.com/ru/company/touchinstinct/blog/345336/
 
 ### Публикация приложения в Google Play
+https://www.youtube.com/watch?v=q7NFn2Wfwxc
 https://habr.com/ru/company/livetyping/blog/326874/
 
 
