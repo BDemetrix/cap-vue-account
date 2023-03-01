@@ -131,11 +131,11 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 
 
 ### При обновлении проекта из репы или после внесения изменений 
-Если добавлялись/обновлялись пакеты (видно по изменениям в package.json)
+Если добавлялись/обновлялись пакеты (видно по изменениям в package.json)  
 ```npm i```
 
-необходимо выполнить 
-```npm run build```
+необходимо выполнить   
+```npm run build```  
 ```npx cap sync```
 
 
@@ -198,7 +198,7 @@ https://habr.com/ru/company/livetyping/blog/326874/
 ### 1. Установить vue
 https://v3.ru.vuejs.org/ru/guide/installation.html#cli
 
-```npm install -g @vue/cli```
+```npm install -g @vue/cli```  
 ```vue create <project-name>```
 ```
 Ручная настройка
@@ -211,7 +211,7 @@ https://v3.ru.vuejs.org/ru/guide/installation.html#cli
 Use history mode for router? Y
 
 ### 2. Подключение стилей 
- В main.js import '@/assets/scss/style.scss'
+ В main.js: ```import '@/assets/scss/style.scss'```
 
  Желательно хранить стили компонентоа в отдельных файлах 
  и подключать их в style.scss через @import
@@ -261,12 +261,12 @@ chrome://flags/#unsafely-treat-insecure-origin-as-secure
 
 ### 5. Установить для Vue https://capacitorjs.com/solution/vue согласно инструкциям:
 
-`npm install @capacitor/cli @capacitor/core `
-`npx cap init`
+```npm install @capacitor/cli @capacitor/core```
+```npx cap init```
 
-`npm install @capacitor/ios @capacitor/android `
-`npx cap add ios`
-`npx cap add android`
+```npm install @capacitor/ios @capacitor/android```
+```npx cap add ios```
+```npx cap add android```
 
 если надо использовать код и для web
 https://capacitorjs.com/docs/web
