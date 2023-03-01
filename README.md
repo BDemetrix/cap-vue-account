@@ -158,6 +158,11 @@ https://firebase.google.com/docs/cloud-messaging?hl=ru
 Настройка доступов для отправления пушей осуществляется в консоли firebase  
 Project settings -> Cloud Messaging
 
+! Для отправления пушей через firebase для устройств Apple  
+необходимо получение ключа (APNs Authentication Key) и сертификатов (APNs Certificates) 
+и добавление их в консоль firebase
+
+
 
 ### Вход по биометрии
 Capacitor Native Biometric  
@@ -195,6 +200,11 @@ https://habr.com/ru/company/touchinstinct/blog/345336/
 ### Публикация приложения в Google Play
 https://www.youtube.com/watch?v=q7NFn2Wfwxc
 https://habr.com/ru/company/livetyping/blog/326874/
+
+
+### RuStore
+RuStore - одна из альтернатив Google Play от VK  
+https://help.rustore.ru/rustore/for_developers/publishing_and_verifying_apps/account
 
 
 ## Создание нового проекта
