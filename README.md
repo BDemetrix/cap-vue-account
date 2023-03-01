@@ -261,11 +261,11 @@ chrome://flags/#unsafely-treat-insecure-origin-as-secure
 
 ### 5. Установить для Vue https://capacitorjs.com/solution/vue согласно инструкциям:
 
-```npm install @capacitor/cli @capacitor/core```
+```npm install @capacitor/cli @capacitor/core```  
 ```npx cap init```
 
-```npm install @capacitor/ios @capacitor/android```
-```npx cap add ios```
+```npm install @capacitor/ios @capacitor/android```  
+```npx cap add ios```  
 ```npx cap add android```
 
 если надо использовать код и для web
