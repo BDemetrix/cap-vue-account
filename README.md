@@ -1,16 +1,21 @@
 # cap-vue-account
 
-## Project setup
+## Установка проекта
+Скачать репозиторий, открыть терминал в папке cap-vue-account
+```
+cd cap-vue-account
+```
+Выполнить установку
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Компиляция и "горячая" перезаргузка для разработки
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Компилирует и минимизирует для продакшена
 ```
 npm run build
 ```
@@ -20,15 +25,23 @@ npm run build
 npm run lint
 ```
 
+### Компиляция для 
+После внесени изменений в проект выполнить
+```
+npm run build
+npx cap sync
+```
+И открыть необходимую IDE (Android Studio или Xcode)
+```
+npx cap open android
+```
+или
+```
+npx cap open ios
+```
 
-### Для синхронизации плагинов vuex и vue-router 
-надо установить https://www.npmjs.com/package/vuex-router-sync
-`npm i vuex-router-sync`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-### Среда разработки Android (тестировать на устройстве)
+### Среда разработки для Android (тестировать на устройстве)
 Для разработки следуетс установить SDK Tools
 Tools > SDK Manager or click SDK Manager
 https://developer.android.com/studio/intro/update#sdk-manager
@@ -46,7 +59,8 @@ PATH: C:/Users/Android/Sdk/tools;C:/Users/Android/Sdk/platform-tools
 Готовый *.apk лежит здесь:
 android/app/build/outputs/apk/debug/
 
-### Окружение для iOS
+
+### Среда разработки для iOS
 https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 
 Возможно понадобится доустановить cocoapods на macOS
@@ -60,16 +74,26 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 Выполнить:
 `npx cap sync ios`
 
+Ошибка:
+[error] xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer
+        directory '/Library/Developer/CommandLineTools' is a command line tools instance
+
+Разрешение: https://github.com/nodejs/node-gyp/issues/569
+
+
 
 ### Тестировать приложение на реальном iPhone
 https://www.youtube.com/watch?v=e3svWl96dj0
 
-Файл для установки лежит в инспекторе файлов Xcode в ProjectName/Products/ProjectName.app
+Файл для установки лежит в инспекторе файлов (дерево проекта) Xcode 
+в ProjectName/Products/ProjectName.app
+Пример: App/Product/App.app
 Кликнуть по нему праввой кнопкой, выбрать Show File Inspector, скопировать в другую директорию, сжать в zip, изменить расширение в ipa
+Файл *.ipa можно установить на iPhone
 
 
-
-### Добввить переменную среды PATH для VS Code
+### Решение проблемы с интерфейсом VS Code на macOS
+Добввить переменную среды PATH для VS Code
 https://habr.com/ru/company/microsoft/blog/262523/
 Для MacOS
 `code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}`
@@ -84,16 +108,6 @@ Add "disable-hardware-acceleration": true.
 Restart VS Code.
 
 
-Ошибка:
-[error] xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer
-        directory '/Library/Developer/CommandLineTools' is a command line tools instance
-
-Разрешение: https://github.com/nodejs/node-gyp/issues/569
-
-Установочный файл для iOS лежит в дереве проекта в  App/App/Product/App.app
-его необходимо сжать в *.zip и переиновать в *.ipa
-
-
 
 ### Подключение firebase
 1. Открвть консоль firebase и создать проект 
@@ -104,16 +118,19 @@ https://console.firebase.google.com/?hl=ru
 
 ! При сборке capacitorjs или другим фреймворком НЕ ДОБАВЛЯТЬ в Xcode > File > Add Packages (описано в инструкции по предыдущей ссылке). Добавление приводит к ошибке `Redefinition of module 'Firebase'`
 
-#### Добавление приложения Android
+#### Добавление приложения Android в firebase
 https://console.firebase.google.com/project/cap-vue-account/settings/general/android:com.example.app?hl=ru
 
-#### Добавление приложения iOS
+#### Добавление приложения iOS в firebase
 https://console.firebase.google.com/project/cap-vue-account/settings/general/ios:com.example.app?hl=ru
 ! При сборке capacitorjs или другим фреймворком НЕ ДОБАВЛЯТЬ в Xcode > File > Add Packages (описано в инструкции по предыдущей ссылке). Добавление приводит к ошибке `Redefinition of module 'Firebase'`
 
+! Для отправления пушей череза firebase для устройств Apple
+необходимо получение ключа (APNs Authentication Key) и сертификатов (APNs Certificates) 
+и добавление их в консоль firebase
 
 
-### При обновлении проекта из репы лили после внесения изменений 
+### При обновлении проекта из репы или после внесения изменений 
 Если добавлялись/обновлялись пакеты (видно по изменениям в package.json)
 `npm i`
 
@@ -122,15 +139,20 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 `npx cap sync`
 
 
+
 ### Аутентификация в firebase из capacitor плагина
 https://www.npmjs.com/package/@capacitor-firebase/authentication
 
-### Push-уведомления
+
+### Push-уведомления 
 https://capacitorjs.com/docs/apis/push-notifications
 Выполнить действия
 https://i.stack.imgur.com/FbQDL.png
 
 https://firebase.google.com/docs/cloud-messaging?hl=ru
+
+Настройка доступов для отправления пушей осуществляется в консоли firebase
+Project settings -> Cloud Messaging
 
 
 ### Вход по биометрии
@@ -140,7 +162,7 @@ https://www.npmjs.com/package/capacitor-native-biometric
 
 
 
-#### REST Resource: projects.messages+
+#### REST Resource для отправки пушей с сервера через firebase
 Сообщение для отправки облачной службой обмена сообщениями Firebase
 https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages?hl=ru
 
@@ -256,3 +278,9 @@ https://capacitorjs.com/docs/web
 
 
 
+### Для синхронизации плагинов vuex и vue-router 
+надо установить https://www.npmjs.com/package/vuex-router-sync
+`npm i vuex-router-sync`
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
