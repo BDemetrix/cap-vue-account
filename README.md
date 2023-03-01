@@ -179,10 +179,8 @@ https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
 
 ### Сертификаты для Apple
 https://developer.apple.com/  
-
-Здесь написано какие сертификаты бывают и зачем нужны.
+Здесь написано какие сертификаты бывают и зачем нужны.  
 Надо их получить.  
-
 https://fmaxx.github.io/ios/provisioning/2017/08/20/ios-provisioning-part-1.html  
 https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
 
