@@ -36,9 +36,13 @@ npm run build
 npx cap sync
 ```
 И открыть необходимую IDE (Android Studio или Xcode)
-```npx cap open android```
+```
+npx cap open android
+```
 или
-```npx cap open ios```
+```
+npx cap open ios
+```
 
 
 ### Среда разработки для Android (тестировать на устройстве)
