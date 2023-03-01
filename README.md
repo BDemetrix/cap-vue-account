@@ -1,7 +1,11 @@
 # cap-vue-account
 
 ## Установка проекта
-Скачать репозиторий, открыть терминал в папке cap-vue-account
+Скачать репозиторий
+```
+git clone https://github.com/BDemetrix/cap-vue-account.git
+```
+Открыть терминал в папке cap-vue-account
 ```
 cd cap-vue-account
 ```
@@ -25,20 +29,16 @@ npm run build
 npm run lint
 ```
 
-### Компиляция для 
+### Компиляция для Android и iOS
 После внесени изменений в проект выполнить
 ```
 npm run build
 npx cap sync
 ```
 И открыть необходимую IDE (Android Studio или Xcode)
-```
-npx cap open android
-```
+```npx cap open android```
 или
-```
-npx cap open ios
-```
+```npx cap open ios```
 
 
 ### Среда разработки для Android (тестировать на устройстве)
@@ -64,15 +64,15 @@ android/app/build/outputs/apk/debug/
 https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 
 Возможно понадобится доустановить cocoapods на macOS
-`sudo gem install cocoapods`  
+```sudo gem install cocoapods```  
 
 затем выполнить 
-`npx cap open ios`
+```npx cap open ios```
 
 Изменить настройки https://capacitorjs.com/docs/v3/ios/configuration#setting-capabilities
 
 Выполнить:
-`npx cap sync ios`
+```npx cap sync ios```
 
 Ошибка:
 [error] xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer
@@ -96,10 +96,10 @@ https://www.youtube.com/watch?v=e3svWl96dj0
 Добввить переменную среды PATH для VS Code
 https://habr.com/ru/company/microsoft/blog/262523/
 Для MacOS
-`code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}`
+```code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}```
 
 если графическая оболочка VS Code кривая необходимо вполнить в терминале 
-`code --disable-gpu`
+```code --disable-gpu```
 Затем зайти в настройки VS Code и:
 Open the Command Palette (⇧⌘P).
 Run the Preferences: Configure Runtime Arguments command.
@@ -156,13 +156,13 @@ Project settings -> Cloud Messaging
 
 
 ### Вход по биометрии
-Capacitor Native Biometric
+Capacitor Native Biometric  
 `npm i capacitor-native-biometric`
 https://www.npmjs.com/package/capacitor-native-biometric
 
 
 
-#### REST Resource для отправки пушей с сервера через firebase
+### REST Resource для отправки пушей с сервера через firebase
 Сообщение для отправки облачной службой обмена сообщениями Firebase
 https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages?hl=ru
 
@@ -178,22 +178,20 @@ https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
 
 
 ### Сертификаты для Apple
-https://developer.apple.com/
+https://developer.apple.com/  
+
 Здесь написано какие сертификаты бывают и зачем нужны.
-Надо их получить.
-https://fmaxx.github.io/ios/provisioning/2017/08/20/ios-provisioning-part-1.html
+Надо их получить.  
+
+https://fmaxx.github.io/ios/provisioning/2017/08/20/ios-provisioning-part-1.html  
 https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
-
-
-
-### Публикация приложения в Google Play
-https://habr.com/ru/company/livetyping/blog/326874/
-
 
 ### Релизу в App Store
 https://habr.com/ru/company/touchinstinct/blog/341858/
 https://habr.com/ru/company/touchinstinct/blog/345336/
 
+### Публикация приложения в Google Play
+https://habr.com/ru/company/livetyping/blog/326874/
 
 
 ## Создание нового проекта
@@ -201,16 +199,16 @@ https://habr.com/ru/company/touchinstinct/blog/345336/
 ### 1. Установить vue
 https://v3.ru.vuejs.org/ru/guide/installation.html#cli
 
-$ `npm install -g @vue/cli`
-$ `vue create <project-name>` 
-
+```npm install -g @vue/cli```
+```vue create <project-name>```
+```
 Ручная настройка
  ◉ Babel
  ◉ Router
  ◉ Vuex
  ◉ CSS Pre-processors
  ◉ Linter / Formatter
-
+```
 Use history mode for router? Y
 
 ### 2. Подключение стилей 
@@ -220,7 +218,7 @@ Use history mode for router? Y
  и подключать их в style.scss через @import
 
 
- ### 3. Настройка PWA во Vue (при необходимости) 
+### 3. Настройка PWA во Vue (при необходимости) 
 https://cli.vuejs.org/core-plugins/pwa.html
 https://webdevblog.ru/sozdanie-pwa-s-pomoshhju-vue-js/
 Чтобы переопределить значения по умолчанию в манифесте нашего веб-приложения, нужно настроить файл vue.config.js в корне нашего проекта.
