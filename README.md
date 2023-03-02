@@ -63,7 +63,8 @@ PATH: C:/Users/Android/Sdk/tools;C:/Users/Android/Sdk/platform-tools
 Готовый *.apk лежит здесь:  
 android/app/build/outputs/apk/debug/
 
-![image](https://user-images.githubusercontent.com/64604742/222429539-ea847075-1428-469a-aa79-f888b5e2d6d6.png)
+![image](https://user-images.githubusercontent.com/64604742/222429893-91f8c5f1-b7f8-4628-bed2-c55ea5939f96.png)
+
 
 
 ### Среда разработки для iOS
