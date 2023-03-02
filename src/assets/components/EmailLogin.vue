@@ -16,7 +16,7 @@
         autocomplete="off"
         v-model="user.password"
       />
-      <button class="btn" type="submit" @click="logIn">Войти</button>
+      <button class="btn" type="submit" @click="logIn(user)">Войти</button>
 
       <button class="link" type="submit" @click="updateSigned('')">
         Зарегистрироваться
@@ -24,8 +24,7 @@
       <button class="link" type="button" v-if="isSigned || isLogged" @click="exit">
           Выйти
       </button>
-
-      <button class="link" type="submit" @click="bioSignUp" v-if="biometryType.prop">{{biometryType.name}}</button>
+      <button class="link" v-if="biometryType.name" type="button" @click="bioSignUp">{{ biometryType.name }}</button>
 
       <!-- <label>
         <input
@@ -40,7 +39,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions, mapMutations } from "vuex";
+import { mapActions, mapMutations, mapGetters } from "vuex";
 
 export default {
   name: "EmailLogin",
@@ -55,13 +54,21 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['isSigned', 'isLogged', 'biometryType'])
+    ...mapGetters(['isSigned', 'isLogged', 'biometryType']),
+    // ...mapState(['isSigned', 'isLogged', 'biometryType'])
+  },
+  watch: {
+    //...mapGetters(['isSigned', 'isLogged', 'biometryType'])
   },
   methods: {
-    ...mapActions(['logInWithEmailAndPassword', 'clearNativeBiometric', 'logOut']),
+    ...mapActions(['logInWithEmailAndPassword', 'clearNativeBiometric', 'logOut', 'performBiometricVerificatin']),
     ...mapMutations(['updateSigned']),
-    async logIn() {
-      await this.logInWithEmailAndPassword(this.user)
+    async logIn(user) {
+      const result = await this.logInWithEmailAndPassword(user)
+      if (!result) {
+        alert('Вход не осуществлен')
+        return
+      }
       this.$router.push('/push')
     },
 
@@ -69,12 +76,12 @@ export default {
       const user = await this.performBiometricVerificatin()
       user.email = user.username
       console.log(user)
-      this.logInWithEmailAndPassword(user)
+      this.logIn(user)
     },
 
     exit() {
       this.logOut()
-      // this.clearNativeBiometric()
+      this.clearNativeBiometric()
     }
   },
 };

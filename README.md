@@ -59,6 +59,9 @@ https://www.youtube.com/watch?v=JTHhqfooUuM
 Если не находятся команды в командной строке, надо добавить системные переменные  
 PATH: C:/Users/Android/Sdk/tools;C:/Users/Android/Sdk/platform-tools
 
+How To Fix ‘INSTALL_FAILED_USER_RESTRICTED’ On Xiaomi Phones (Android Studio)  
+https://www.nucleiotechnologies.com/how-to-fix-install_failed_user_restricted-on-xiaomi-devices-android-studio/
+
 Чтобы создать установочный файл надо воспользоваться пунктом меню Build  
 Готовый *.apk лежит здесь:  
 android/app/build/outputs/apk/debug/
@@ -149,6 +152,7 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 
 ### Аутентификация в firebase из capacitor плагина
 https://www.npmjs.com/package/@capacitor-firebase/authentication
+! ошибка возвращается в виде пустонго объекта `{}`
 
 
 ### Push-уведомления 
@@ -296,6 +300,7 @@ https://capacitorjs.com/docs/web
 ### Для синхронизации плагинов vuex и vue-router 
 надо установить https://www.npmjs.com/package/vuex-router-sync
 `npm i vuex-router-sync`
+! Не получается в роутере получить доступ к vuex state
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).

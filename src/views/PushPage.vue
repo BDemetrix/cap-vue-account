@@ -1,5 +1,6 @@
 <template>
     <div class="login wrapper">
+        <back-arrow @go-back="goBack"/>
         <img class="logo" src="@/assets/logo.png" alt="Логотип" />
         <h4 style="margin-bottom: 42px">Вы вошли в личный кабинет</h4>
 
@@ -44,11 +45,16 @@
 </template>
 
 <script>
-import { PushNotifications } from "@capacitor/push-notifications";
+import BackArrow from "@/assets/components/BackArrow.vue"
+import { PushNotifications } from "@capacitor/push-notifications"
+import { mapMutations } from "vuex";
 // import { mapActions } from "vuex";
 
 export default {
     name: "PushPage",
+    components: {
+        BackArrow
+    },
     data() {
         return {
             pushMsg: {
@@ -59,9 +65,14 @@ export default {
             fcmSigned: !!window.localStorage.getItem("fcmSigned"),
             btnText: this.fcmSigned ? "Отправить Push" : "Подписаться на Push",
         };
-    },
+    }, 
     methods: {
-        // ...mapActions(''),
+        ...mapMutations('updateLogged'),
+
+        goBack() { 
+            window.localStorage.setItem("fcmSigned", "")
+            this.updateLogged('')
+        },
         async push() {
             this.fcmSigned
                 ? await this.sendPush()

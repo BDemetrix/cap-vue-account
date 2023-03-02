@@ -30,7 +30,8 @@ const router = createRouter({
 
 
 router.beforeEach(async (to, from, next) => {
-    //const isLogged = await store.getters.isLogged
+    //const isLogged = await store.state.isLogged
+    //alert(JSON.stringify(store))
     const isLogged = window.localStorage.getItem('isLogged');
     console.log(isLogged)
     if (!['Home', 'Login'].includes(to.name) && !isLogged) {
