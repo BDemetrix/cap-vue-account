@@ -1,6 +1,11 @@
 // https://firebase.google.com/docs/auth/web/start?hl=en&authuser=0
-import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
-import { NativeBiometric, BiometryType } from "capacitor-native-biometric";
+import {
+  FirebaseAuthentication
+} from '@capacitor-firebase/authentication';
+import {
+  NativeBiometric,
+  BiometryType
+} from "capacitor-native-biometric";
 
 export default {
   state: {
@@ -63,57 +68,82 @@ export default {
     },
   },
   actions: {
-    signUp({ commit, getters }, user) {
+    
+    signUp({
+      commit,
+      getters,
+      dispatch
+    }, user) {
 
-      let isSigned = '';
+      let isSigned = '1';
       FirebaseAuthentication.createUserWithEmailAndPassword({
           email: user.email,
           password: user.password,
         })
         .then((userCredential) => {
-          const { user } = userCredential;
-          console.log(user);
-          isSigned = user ? '1' : ''
+          const uid = userCredential.user.uid;
+          console.log(uid);
+          isSigned = uid ? '1' : ''
 
           // Save user's credentials
-          NativeBiometric.setCredentials({
+          const params = {
             username: user.email,
             password: user.password,
-            server: getters.server,
-          }).then();
+            server: getters.server
+          }
+          dispatch('setCredentials', params)
+          alert('Вы зарегистрированы')
         })
         .catch((error) => {
-          console.log(error);
-          if (error.code === 'auth/email-already-in-use') {
+          console.log(error)
+          alert('Такой логин уже существует')
+          if (error?.code.match('email-already-in-use')) {
             alert('Такой логин уже существует')
           } else {
-            alert('Ошибка регистрации: \n\n' + error.code)
+            alert('Ошибка регистрации: \n\n' + JSON.stringify(error))
           }
         });
 
-      commit('isSigned', isSigned)
+      commit('updateSigned', isSigned)
     },
 
-    logInWithEmailAndPassword(ctx, user) {
-      let isLogged = '1'
-      FirebaseAuthentication.signInWithEmailAndPassword({
+    async setCredentials({state}, user) {
+      await NativeBiometric.setCredentials(user).then( res => JSON.stringify(res))
+      return state;
+    },
+
+    async logInWithEmailAndPassword(ctx, user) {
+      let isLogged = ''
+      let result = await FirebaseAuthentication.signInWithEmailAndPassword({
           email: user.email,
           password: user.password,
         })
         .then((userCredential) => {
-          const user = userCredential.user
+          const uid = userCredential.user.uid
           console.log(user)
-          isLogged = user ? '1' : '' 
+
+          if (uid) {
+            isLogged = '1'
+          } 
+
+          const params = {
+            username: user.email,
+            password: user.password,
+            server: ctx.getters.server
+          }
+          ctx.dispatch('setCredentials', params)
+          return true
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode, errorMessage);
           window.localStorage.setItem("isSigned", "");
-          return false;
+          return false
         });
 
-        ctx.commit('updateLogged', isLogged)
+      ctx.commit('updateLogged', isLogged)
+      return result;
     },
 
     async defineBiometryType(ctx) {
@@ -125,7 +155,7 @@ export default {
         case BiometryType.TOUCH_ID:
         case BiometryType.FINGERPRINT:
           type.prop = 'TOUCH_ID'
-          type.name = str  + 'отпечатку'
+          type.name = str + 'отпечатку'
           break
 
         case BiometryType.FACE_ID:
@@ -143,48 +173,51 @@ export default {
           type.prop = 'MULTIPLE'
           type.name = 'Множественна идентификация'
           break
-      
+
         default:
           alert("Биометрия не поддерживается")
           type.prop = null
           type.name = 'Биометрия не поддерживается'
           break
       }
-
-      ctx.commit('biometryType', type)
+      
+      ctx.commit('setBiometryType', type)
       return type
     },
 
-    async performBiometricVerificatin({ getters }) {
+    async performBiometricVerificatin({state}) {
 
       const verified = await NativeBiometric.verifyIdentity({
           reason: "Для более простого входа",
-          title: "Вход по биометрии",
+          title: state.biometryType.name,
         })
         .then(() => true)
         .catch(() => false);
 
       if (!verified) {
-        alert("Биометрия не идентифицирована.\n\nИспользуйте другой способ входа.");
+        alert("Биометрия не идентифицирована.\n\nИспользуйте другой способ входа или попробуйте еще раз.");
         return;
       }
-
       const credentials = await NativeBiometric.getCredentials({
-        server: getters.server,
+        server: state.server,
       });
-
       return credentials;
     },
 
-    clearNativeBiometric({ getters }) {
+    clearNativeBiometric({
+      state
+    }) {
       NativeBiometric.setCredentials({
         username: '',
         password: '',
-        server: getters.server,
+        server: state.server,
       }).then();
     },
 
-    logOut({commit, dispatch}) {
+    logOut({
+      commit,
+      dispatch
+    }) {
       const user = {
         email: '',
         password: ''

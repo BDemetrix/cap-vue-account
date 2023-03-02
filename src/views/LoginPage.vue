@@ -17,20 +17,15 @@ export default {
     computed: {
         ...mapGetters(['isSigned'])
     },
+    watch: {
+        //...mapGetters(['isSigned'])
+    },
     methods: {
-        ...mapActions(['defineBiometryType', 'clearNativeBiometric']),
+        ...mapActions(['clearNativeBiometric']),
         ...mapMutations(['clearData']),
         exit() {
             this.clearData()
             this.clearNativeBiometric()
-        }
-    },
-    mounted() {
-        try {
-            this.defineBiometryType()
-        } catch (error) {
-            alert('Ошибка доступа к биометрии')
-            console.log(error)
         }
     }
 }
