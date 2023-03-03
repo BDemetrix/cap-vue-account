@@ -23,10 +23,6 @@ export default {
     methods: {
         ...mapActions(['clearNativeBiometric']),
         ...mapMutations(['clearData']),
-        exit() {
-            this.clearData()
-            this.clearNativeBiometric()
-        }
     }
 }
 </script>

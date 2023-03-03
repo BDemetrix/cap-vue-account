@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 // import { mapGetters } from "vuex";
-// import store from '@/store/store'
+import store from '@/store/store'
 import LoginPage from '@/views/LoginPage.vue';
 import PushPage from '@/views/PushPage.vue';
 
@@ -29,10 +29,10 @@ const router = createRouter({
 })
 
 
-router.beforeEach(async (to, from, next) => {
-    //const isLogged = await store.state.isLogged
-    //alert(JSON.stringify(store))
-    const isLogged = window.localStorage.getItem('isLogged');
+router.beforeEach((to, from, next) => {
+    const isLogged = store.getters.isLogged
+    //alert(JSON.stringify({isLogged}))
+    // const isLogged = window.localStorage.getItem('isLogged');
     console.log(isLogged)
     if (!['Home', 'Login'].includes(to.name) && !isLogged) {
         alert('Для перехода не эту страницу вам необходимо авторизоваться.')

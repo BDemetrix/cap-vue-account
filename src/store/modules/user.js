@@ -8,19 +8,22 @@ import {
 } from "capacitor-native-biometric";
 
 export default {
-  state: {
-    user: {
-      email: '',
-      password: ''
-    },
-    isSigned: '',
-    isLogged: '',
-    isRemember: '',
-    biometryType: {
-      prop: null,
-      name: ''
-    },
-    server: 'www.example.com'
+  state() {
+    return {
+      user: {
+        email: '',
+        password: ''
+      },
+      isSigned: '',
+      isLogged: '',
+      isRemember: '',
+      biometryType: {
+        prop: null,
+        name: ''
+      },
+      server: 'www.example.com',
+      hasCredentials: '',
+    }
   },
   getters: {
     user(state) {
@@ -37,6 +40,9 @@ export default {
     },
     isRemember(state) {
       return state.isRemember
+    },
+    hasCredentials(state) {
+      return state.hasCredentials
     },
     biometryType(state) {
       return state.biometryType
@@ -57,12 +63,17 @@ export default {
     setBiometryType(state, type) {
       state.biometryType = type
     },
+    updateCredentials(state, val) {
+      state.hasCredentials = val
+      window.localStorage.setItem('hasCredentials', val)
+    },
     clearData(state) {
       for (const key in state) {
         if (typeof key !== 'object' && key !== 'server') {
           state[key] = ''
         }
       }
+      window.localStorage.setItem('hasCredentials', '')
       window.localStorage.setItem('isSigned', '')
       window.localStorage.setItem('isLogged', '')
     },
@@ -107,9 +118,9 @@ export default {
       commit('updateSigned', isSigned)
     },
 
-    async setCredentials({state}, user) {
+    async setCredentials({commit}, user) {
       await NativeBiometric.setCredentials(user).then( res => JSON.stringify(res))
-      return state;
+      commit('updateCredentials', '1')
     },
 
     async logInWithEmailAndPassword(ctx, user) {

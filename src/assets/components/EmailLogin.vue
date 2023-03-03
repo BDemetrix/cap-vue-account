@@ -24,7 +24,7 @@
       <button class="link" type="button" v-if="isSigned || isLogged" @click="exit">
           Выйти
       </button>
-      <button class="link" v-if="biometryType.name" type="button" @click="bioSignUp">{{ biometryType.name }}</button>
+      <button class="link" v-if="biometryType.name && hasCredentials" type="button" @click="bioSignUp">{{ biometryType.name }}</button>
 
       <!-- <label>
         <input
@@ -54,7 +54,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['isSigned', 'isLogged', 'biometryType']),
+    ...mapGetters(['isSigned', 'isLogged', 'biometryType', 'hasCredentials']),
     // ...mapState(['isSigned', 'isLogged', 'biometryType'])
   },
   watch: {
