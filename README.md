@@ -103,7 +103,10 @@ https://www.youtube.com/watch?v=e3svWl96dj0
 в ProjectName/Products/ProjectName.app
 Пример: App/Product/App.app
 Кликнуть по нему праввой кнопкой, выбрать Show File Inspector, скопировать в другую директорию, сжать в zip, изменить расширение в ipa
-Файл *.ipa можно установить на iPhone
+Файл *.ipa можно установить на iPhone  
+  
+![image](https://user-images.githubusercontent.com/64604742/222783231-5682417e-aa38-4b9c-831e-027a65def3e3.png)
+
 
 
 ### Решение проблемы с интерфейсом VS Code на macOS
