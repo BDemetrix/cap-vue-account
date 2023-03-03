@@ -90,6 +90,10 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 
 Разрешение: https://github.com/nodejs/node-gyp/issues/569
 
+Чтобы в симуляторе появилась виртуальна клавиатура надо снять галочку "Connect Hardware Keyboard"  
+В зависимости от версии Xcode меню может отличаться.  
+В Xcode 14: меню симулятора -> I/O -> Keyboard -> "Connect Hardware Keyboard"  
+![image](https://user-images.githubusercontent.com/64604742/222782000-b0fd8dbb-0b88-47a8-83be-6e9d6b8e7def.png)
 
 
 ### Тестировать приложение на реальном iPhone
