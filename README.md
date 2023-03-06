@@ -129,7 +129,9 @@ Restart VS Code.
 ### Подключение firebase
 1. Открвть консоль firebase и создать проект 
 https://console.firebase.google.com/?hl=ru 
-2. Добввить и зарегистрировать приложения Android и iOS (и/или другой)
+2. Добввить и зарегистрировать приложения Android и iOS (и/или другой)  
+
+![image](https://user-images.githubusercontent.com/64604742/223053103-3e78a69a-0b46-4faf-b18f-fad0064075bc.png)  
 
 ! При подключении сервисов firebase необходимо мышкой перетащить GoogleService-Info.plist из папки с проектом в навигатор Xcode рядом с Info.plist (почему-то Xcode не подхватывает его автоматически)
 
@@ -144,7 +146,13 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 
 ! Для отправления пушей через firebase для устройств Apple  
 необходимо получение ключа (APNs Authentication Key) и сертификатов (APNs Certificates) 
-и добавление их в консоль firebase
+и добавление их в консоль firebase  
+
+![image](https://user-images.githubusercontent.com/64604742/223053535-85b20a5a-738b-45a8-945b-0bd9734cbd6c.png)  
+![image](https://user-images.githubusercontent.com/64604742/223053741-d41f2b97-b874-4974-bdc0-66a916e43d9c.png)
+![image](https://user-images.githubusercontent.com/64604742/223054162-9d4a7812-9acc-4b01-8ef2-7c49e8d8562a.png)
+
+
 
 
 ### При обновлении проекта из репы или после внесения изменений 
