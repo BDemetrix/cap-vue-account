@@ -147,6 +147,7 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 ! Для отправления пушей через firebase для устройств Apple  
 необходимо получение ключа (APNs Authentication Key) и сертификатов (APNs Certificates) 
 и добавление их в консоль firebase  
+https://www.youtube.com/watch?v=8c3xmsbDNxQ  
 
 ![image](https://user-images.githubusercontent.com/64604742/223053535-85b20a5a-738b-45a8-945b-0bd9734cbd6c.png)  
 ![image](https://user-images.githubusercontent.com/64604742/223053741-d41f2b97-b874-4974-bdc0-66a916e43d9c.png)
