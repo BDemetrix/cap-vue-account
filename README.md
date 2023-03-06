@@ -186,6 +186,10 @@ Project settings -> Cloud Messaging
 и добавление их в консоль firebase
 
 
+### Push Kit от Huawei  
+https://habr.com/ru/company/huawei/blog/520710/
+https://www.youtube.com/watch?v=YclRgQZu3Fc
+
 
 ### Вход по биометрии
 Capacitor Native Biometric  
