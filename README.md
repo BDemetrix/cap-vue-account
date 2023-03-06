@@ -187,6 +187,7 @@ Project settings -> Cloud Messaging
 
 
 ### Push Kit от Huawei  
+https://developer.huawei.com/consumer/ru/hms/huawei-pushkit/
 https://habr.com/ru/company/huawei/blog/520710/
 https://www.youtube.com/watch?v=YclRgQZu3Fc
 
