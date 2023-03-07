@@ -88,7 +88,7 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 [error] xcode-select: error: tool 'xcodebuild' requires Xcode, but active developer
         directory '/Library/Developer/CommandLineTools' is a command line tools instance
 
-Разрешение: https://github.com/nodejs/node-gyp/issues/569
+Решение: https://github.com/nodejs/node-gyp/issues/569
 
 Чтобы в симуляторе появилась виртуальна клавиатура надо снять галочку "Connect Hardware Keyboard"  
 В зависимости от версии Xcode меню может отличаться.  
