@@ -179,8 +179,12 @@ https://www.npmjs.com/package/@capacitor-firebase/authentication
 
 ### Push-уведомления 
 https://capacitorjs.com/docs/apis/push-notifications
-Выполнить действия
+Выполнить действия  
 https://i.stack.imgur.com/FbQDL.png
+
+Для этог надо скачать и установить сертификат со своего аккаунта разработчика  
+![image](https://user-images.githubusercontent.com/64604742/223456786-73297605-9eab-4361-bbb3-c68022398c19.png)
+
 
 https://firebase.google.com/docs/cloud-messaging?hl=ru  
 
