@@ -107,9 +107,11 @@ https://www.youtube.com/watch?v=e3svWl96dj0
   
 ![image](https://user-images.githubusercontent.com/64604742/222783231-5682417e-aa38-4b9c-831e-027a65def3e3.png)
 
-#### Установить любое приложение на iPhone  
+#### Установить любое приложение на iPhone
 https://www.youtube.com/shorts/1Od2EF3S46M  
 https://www.youtube.com/watch?v=kcd0WtSVW6s  
+  
+  
 
 
 
