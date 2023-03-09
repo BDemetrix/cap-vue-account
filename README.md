@@ -98,7 +98,8 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 *********  
 
 Для создания сертификатов для разрешения push необходимо, чтоб macBook был залогинен на разработчика на которого выдается сертификат.  
-Логиниться приходится через App Store, затем через программу Developer ![image](https://user-images.githubusercontent.com/64604742/224035483-8ba672f5-ac57-4639-8cb4-731c920f08a8.png)
+Логиниться приходится через App Store, затем через программу Developer  
+![image](https://user-images.githubusercontent.com/64604742/224035483-8ba672f5-ac57-4639-8cb4-731c920f08a8.png)
 
 
 
