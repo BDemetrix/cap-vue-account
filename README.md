@@ -101,6 +101,17 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 Логиниться приходится через App Store, затем через программу Developer  
 ![image](https://user-images.githubusercontent.com/64604742/224035483-8ba672f5-ac57-4639-8cb4-731c920f08a8.png)
 
+Затем надо сгерерировать ключ в утилите `Keychain Access` (лежит в Applications/Utilities/)  
+![image](https://user-images.githubusercontent.com/64604742/224040433-2aafb5bb-889e-4a74-889e-737094f826ae.png)  
+
+и загрузить этот ключь на стр. https://developer.apple.com/account/resources/certificates/list  
+при добавлении сертификата  
+![image](https://user-images.githubusercontent.com/64604742/224045468-41da8dea-9913-4884-9ac0-5b1574bfc94d.png)  
+![image](https://user-images.githubusercontent.com/64604742/224046091-36888276-4440-48f5-9840-e357745573c9.png)  
+  
+затем скачать сертификат и открыть его (два реза кликнув)
+![image](https://user-images.githubusercontent.com/64604742/224046729-48e35176-034f-4efd-b825-d34b5afdbadd.png)
+
 
 
 
