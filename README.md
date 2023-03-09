@@ -183,7 +183,9 @@ https://www.youtube.com/watch?v=8c3xmsbDNxQ
 ![image](https://user-images.githubusercontent.com/64604742/223053741-d41f2b97-b874-4974-bdc0-66a916e43d9c.png)
 ![image](https://user-images.githubusercontent.com/64604742/223054162-9d4a7812-9acc-4b01-8ef2-7c49e8d8562a.png)
 
-
+**Важно: **  
+Push-уведомления не работают в симуляторе, поэтому для тестирования нужен девайс.  
+https://habr.com/ru/post/156811/
 
 
 ### При обновлении проекта из репы или после внесения изменений 
