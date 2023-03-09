@@ -173,7 +173,7 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 
 ! Для отправления пушей через firebase для устройств Apple  
 необходимо получение ключа (APNs Authentication Key) или сертификатов (APNs Certificates) 
-и добавление их в консоль firebase 
+и добавление их в консоль firebase  
 **Важно**:  
 - ключ APNs выдается в единственном экземпляре для всех проектов. При утере ключа, придется его инвалидировать, генерировать новый и заменять для всех существующих проектов  
 - если выбрать APNs Certificates то придется их обновлять раз в год   
@@ -183,7 +183,7 @@ https://www.youtube.com/watch?v=8c3xmsbDNxQ
 ![image](https://user-images.githubusercontent.com/64604742/223053741-d41f2b97-b874-4974-bdc0-66a916e43d9c.png)
 ![image](https://user-images.githubusercontent.com/64604742/223054162-9d4a7812-9acc-4b01-8ef2-7c49e8d8562a.png)
 
-**Важно: **  
+**Важно:**  
 Push-уведомления не работают в симуляторе, поэтому для тестирования нужен девайс.  
 https://habr.com/ru/post/156811/
 
