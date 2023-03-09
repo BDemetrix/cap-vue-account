@@ -93,7 +93,14 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 Чтобы в симуляторе появилась виртуальна клавиатура надо снять галочку "Connect Hardware Keyboard"  
 В зависимости от версии Xcode меню может отличаться.  
 В Xcode 14: меню симулятора -> I/O -> Keyboard -> "Connect Hardware Keyboard"  
-![image](https://user-images.githubusercontent.com/64604742/222782000-b0fd8dbb-0b88-47a8-83be-6e9d6b8e7def.png)
+![image](https://user-images.githubusercontent.com/64604742/222782000-b0fd8dbb-0b88-47a8-83be-6e9d6b8e7def.png)  
+
+*********  
+
+Для создания сертификатов для разрешения push необходимо, чтоб macBook был залогинен на разработчика на которого выдается сертификат.  
+Логиниться приходится через App Store, затем через программу Developer ![image](https://user-images.githubusercontent.com/64604742/224035483-8ba672f5-ac57-4639-8cb4-731c920f08a8.png)
+
+
 
 
 ### Тестировать приложение на реальном iPhone
@@ -132,6 +139,8 @@ Restart VS Code.
 
 
 
+
+
 ### Подключение firebase
 1. Открвть консоль firebase и создать проект 
 https://console.firebase.google.com/?hl=ru 
@@ -151,8 +160,11 @@ https://console.firebase.google.com/project/cap-vue-account/settings/general/ios
 ! При сборке capacitorjs или другим фреймворком НЕ ДОБАВЛЯТЬ в Xcode > File > Add Packages (описано в инструкции по предыдущей ссылке). Добавление приводит к ошибке `Redefinition of module 'Firebase'`
 
 ! Для отправления пушей через firebase для устройств Apple  
-необходимо получение ключа (APNs Authentication Key) и сертификатов (APNs Certificates) 
-и добавление их в консоль firebase  
+необходимо получение ключа (APNs Authentication Key) или сертификатов (APNs Certificates) 
+и добавление их в консоль firebase 
+**Важно**:  
+- ключ APNs выдается в единственном экземпляре для всех проектов. При утере ключа, придется его инвалидировать, генерировать новый и заменять для всех существующих проектов  
+- если выбрать APNs Certificates то придется их обновлять раз в год   
 https://www.youtube.com/watch?v=8c3xmsbDNxQ  
 
 ![image](https://user-images.githubusercontent.com/64604742/223053535-85b20a5a-738b-45a8-945b-0bd9734cbd6c.png)  
