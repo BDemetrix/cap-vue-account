@@ -115,13 +115,23 @@ https://capacitorjs.com/docs/getting-started/environment-setup#homebrew
 
 
 
-### Тестировать приложение на реальном iPhone
+#### Тестировать приложение на реальном iPhone
 https://www.youtube.com/watch?v=e3svWl96dj0
 
+#### Установочаный файл .IPA в XCODE
+Создать в XCODE архив Product -> Archive, кликнуть по нему праввой кнопкой, выбрать Show File Inspector, изменить расширение на .zip, достать из папки архива Products/Applications/  файл с типом Application и поместить в папку /Payload, сжать Payload в `zip`, изменить расширение на `ipa`.  
+Payload.ipa - приложение  
+
+*!* Для сборки архива обязательно выбрать настройку  `Any iOS Device`:  
+![image](https://user-images.githubusercontent.com/64604742/224749770-671062c6-0706-481b-8be6-4502431f0d93.png)  
+
+Инструкция: https://www.youtube.com/watch?v=daPW5dddku8  
+
+Либо:  
 Файл для установки лежит в инспекторе файлов (дерево проекта) Xcode 
 в ProjectName/Products/ProjectName.app
 Пример: App/Product/App.app
-Кликнуть по нему праввой кнопкой, выбрать Show File Inspector, скопировать в другую директорию, сжать в zip, изменить расширение в ipa
+Кликнуть по нему праввой кнопкой, выбрать Show File Inspector, скопировать в другую директорию в папку /Payload, сжать Payload в `zip`, изменить расширение на `ipa`
 Файл *.ipa можно установить на iPhone  
   
 ![image](https://user-images.githubusercontent.com/64604742/222783231-5682417e-aa38-4b9c-831e-027a65def3e3.png)
