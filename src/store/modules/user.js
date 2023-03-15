@@ -182,11 +182,11 @@ export default {
 
         case BiometryType.MULTIPLE:
           type.prop = 'MULTIPLE'
-          type.name = 'Множественна идентификация'
+          type.name = 'Множественная идентификация'
           break
 
         default:
-          alert("Биометрия не поддерживается")
+          alert("Биометрия не поддерживается. Тип: " + result.biometryType)
           type.prop = null
           type.name = 'Биометрия не поддерживается'
           break
@@ -235,6 +235,8 @@ export default {
       }
       commit('updateUser', user)
       commit('clearData')
+      commit('upFcmSigned', '')
+      commit('updateToken', '')
       dispatch('clearNativeBiometric')
     }
   }

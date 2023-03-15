@@ -214,7 +214,15 @@ https://www.npmjs.com/package/@capacitor-firebase/authentication
 
 
 ### Push-уведомления 
-https://capacitorjs.com/docs/apis/push-notifications
+Для каждой платформы отдельно можно использовать плагин:  
+https://capacitorjs.com/docs/apis/push-notifications  
+
+Для отправки Push с помощью firebase надо использоваь плагин (не будет тработать с Huawei выпущеных после 2019 года)  
+https://www.npmjs.com/package/@capacitor-firebase/messaging
+
+**! Не забыть изменить capacitor.config.json в соотверствии с документацией используемого плагина**  
+**Также надо изменить AndroidManifest.xml и AppDelegate.swift**
+
 Выполнить действия  
 https://i.stack.imgur.com/FbQDL.png
 

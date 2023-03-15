@@ -4,9 +4,6 @@
         <img class="logo" src="@/assets/logo.png" alt="Логотип" />
         <h4 style="margin-bottom: 42px">Вы вошли в личный кабинет</h4>
 
-        <!-- <button class="btn" type="button" @click="push">
-            {{ btnText }}
-        </button> -->
         <button
             class="btn"
             type="button"
@@ -20,7 +17,7 @@
         </button>
 
         <label class="label">Токен</label>
-        <textarea  class="textarea" rows="7" ref="textarea" >Здесь будет токен</textarea>
+        <textarea  class="textarea" rows="7" placeholder="Здесь будет токен" :value="token"></textarea>
 
         <label class="label">Заголовок Push</label>
         <input
@@ -46,9 +43,8 @@
 
 <script>
 import BackArrow from "@/assets/components/BackArrow.vue"
-import { PushNotifications } from "@capacitor/push-notifications"
-import { mapMutations } from "vuex";
-// import { mapActions } from "vuex";
+//import { FirebaseMessaging } from '@capacitor-firebase/messaging';
+import { mapMutations, mapGetters, mapActions} from "vuex";
 
 export default {
     name: "PushPage",
@@ -61,26 +57,24 @@ export default {
                 title: "Тест!",
                 text: "Текст сообщения. Кликни для перехода",
             },
-            token: "",
-            fcmSigned: !!window.localStorage.getItem("fcmSigned"),
-            btnText: this.fcmSigned ? "Отправить Push" : "Подписаться на Push",
         };
     }, 
     methods: {
-        ...mapMutations('updateLogged'),
+        ...mapActions(['addListeners', 'registerNotifications']),
+        ...mapMutations(['updateLogged', 'upFcmSigned', 'updateToken']),
 
+        regNotifications() {
+            //alert('Начало подписки')
+            this.registerNotifications()
+        },
         goBack() { 
-            window.localStorage.setItem("fcmSigned", "")
-            this.updateLogged('')
+            this.upFcmSigned('')
+            // this.updateLogged('')
+            this.updateToken('')
         },
-        async push() {
-            this.fcmSigned
-                ? await this.sendPush()
-                : await this.registerNotifications();
-        },
-
         async sendPush() {
-            let token = this.$refs.textarea.value.trim()
+            let token = this.token
+            // alert(token)
 
             if (!this.fcmSigned) {
                 alert("Подписка не оформлена");
@@ -92,8 +86,7 @@ export default {
                 return;
             }
 
-            console.log(token);
-            window.localStorage.setItem("fcmSigned", "1");
+            console.log('token: ' + token);
 
             const ACCESS_TOKEN =
                 "key=AAAAczkkdTk:APA91bG3gFEALwglHyMkFReUpOGmK38qQFCqJ1uerVqxP5buPJb33ZcWvB0LrTfmWks5hdjdlv6WujZxJO79-Frk6EdIcxKq6nCPCWDm36U8xlc2yoL6Ywt-Exo80njbSkHLO0mhV7GV";
@@ -106,8 +99,8 @@ export default {
                     // "image": image
                 },
                 "android": { //object(AndroidConfig)
-                    "priority": "HIGH", //enum(AndroidMessagePriority) NORMAL HIGH
-                    "restricted_package_name": "com.example.app",
+                    // "priority": "HIGH", //enum(AndroidMessagePriority) NORMAL HIGH
+                    // "restricted_package_name": "com.example.app",
                     "data": { // Произвольная полезная нагрузка ("ключ": "значение")
                     },
                     "notification": { //object(AndroidNotification)
@@ -121,7 +114,7 @@ export default {
                     },
                     "fcm_options": { // object(AndroidFcmOptions)
                     },
-                    "direct_boot_ok": true
+                    // "direct_boot_ok": true
                 },
             };
 
@@ -132,7 +125,7 @@ export default {
                 credentials: "omit", // include, *same-origin, omit
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: ACCESS_TOKEN,
+                    'Authorization': ACCESS_TOKEN,
                     // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 //redirect: 'follow', // manual, *follow, error
@@ -145,73 +138,21 @@ export default {
                 })
                 .then((text) => {
                     console.log(text)
-                    alert("сообщение отправлено");
+                    alert("сообщение отправлено")
+                    // alert(JSON.stringify(text))
                 })
                 .catch((e) => console.log(e));
         },
-
-        async addListeners() {
-            await PushNotifications.addListener("registration", (token) => {
-                console.info("Registration token: ", token.value);
-                this.btnText = "Отправить Push";
-                window.localStorage.setItem("token", token.value);
-                window.localStorage.setItem("fcmSigned", "1");
-                this.fcmSigned = true;
-                this.token = this.$refs.textarea.value = token.value;
-            });
-
-            await PushNotifications.addListener("registrationError", (err) => {
-                console.error("Registration error: ", err.error);
-            });
-
-            await PushNotifications.addListener(
-                "pushNotificationReceived",
-                (notification) => {
-                    console.log("Push notification received: ", notification);
-                    //alert("Push notification received");
-                    //notification.push();
-                }
-            );
-
-            await PushNotifications.addListener(
-                "pushNotificationActionPerformed",
-                (notification) => {
-                    console.log(
-                        "Push notification action performed",
-                        notification.actionId,
-                        notification.inputValue
-                    );
-                    alert("Push notification action performed");
-                }
-            );
-        },
-
-        async registerNotifications() {
-            let permStatus = await PushNotifications.checkPermissions();
-
-            if (permStatus.receive === "prompt") {
-                permStatus = await PushNotifications.requestPermissions();
-            }
-
-            if (permStatus.receive !== "granted") {
-                throw new Error("User denied permissions!");
-            }
-
-            await PushNotifications.register();
-        },
-
-        async getDeliveredNotifications() {
-            const notificationList =
-                await PushNotifications.getDeliveredNotifications();
-            console.log("delivered notifications", notificationList);
-        },
     },
-    async mounted() {
-        this.btnText = this.fcmSigned
-            ? "Отправить Push"
-            : "Подписаться на Push";
-
-        await this.addListeners();
+    computed: {
+        ...mapGetters(['fcmSigned', 'token'])
+    },
+    mounted() {
+        const savedFcmSigned = !!window.localStorage.getItem("fcmSigned")
+        const curToken = window.localStorage.getItem("token")
+        this.upFcmSigned(savedFcmSigned)
+        this.updateToken(curToken)
+        this.addListeners();
     },
 };
 </script>
