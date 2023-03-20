@@ -216,11 +216,14 @@ https://www.npmjs.com/package/@capacitor-firebase/authentication
 ### Push-уведомления 
 Для каждой платформы отдельно можно использовать плагин:  
 https://capacitorjs.com/docs/apis/push-notifications  
+Если этот плагин использует firebase, то iOS следует настроить как описано в   
+https://capacitorjs.com/docs/guides/push-notifications-firebase
 
 Для отправки Push с помощью firebase надо использоваь плагин (не будет тработать с Huawei выпущеных после 2019 года)  
-https://www.npmjs.com/package/@capacitor-firebase/messaging
+https://www.npmjs.com/package/@capacitor-firebase/messaging  
+**при использовании данного плагина не удалось получить пуш, хотя токен приходит и ответ при отправке пуша от firebase тоже приходит**
 
-**! Не забыть изменить capacitor.config.json в соотверствии с документацией используемого плагина**  
+**! При смене плагина: не забыть изменить capacitor.config.json в соотверствии с документацией используемого плагина**  
 **Также надо изменить AndroidManifest.xml и AppDelegate.swift**
 
 Выполнить действия  
@@ -375,7 +378,6 @@ https://capacitorjs.com/docs/web
 ### Для синхронизации плагинов vuex и vue-router 
 надо установить https://www.npmjs.com/package/vuex-router-sync
 `npm i vuex-router-sync`
-! Не получается в роутере получить доступ к vuex state
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
