@@ -1,23 +1,32 @@
 <template>
   <router-view />
+  <main-loader v-show="loading"></main-loader>
 </template>
 
 <script>
-import { Capacitor } from "@capacitor/core"
-import { mapMutations, mapActions } from "vuex"
+// import { Capacitor } from "@capacitor/core"
+import MainLoader from '@/assets/components/MainLoader.vue';
+import { mapMutations, mapActions, mapGetters } from "vuex"
 
 export default {
   name: 'App',
+  components: {
+    MainLoader
+  },
   methods: {
     ...mapMutations(['clearData', 'updateSigned', 'updateCredentials', 'updateToken', 'upFcmSigned']),
-    ...mapActions(['defineBiometryType', 'logOut'])
+    ...mapActions(['defineBiometryType', 'logOut']),
+  },
+  computed: {
+    ...mapGetters(['loading'])
   },
   beforeMount() {
     // alert('App before mounted')
     const isSigned = window.localStorage.getItem('isSigned')
     this.updateSigned(isSigned)
-  }, 
+  },
   mounted() {
+    // alert(Capacitor.getPlatform())
     // alert('App mounted')
     try {
         this.defineBiometryType()
@@ -34,7 +43,7 @@ export default {
     // this.logOut()
     // this.updateToken('')
     // this.upFcmSigned('')
-    alert(Capacitor.getPlatform())
+
   }
 };
 </script>

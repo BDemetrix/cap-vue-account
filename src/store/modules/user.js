@@ -23,6 +23,7 @@ export default {
       },
       server: 'www.example.com',
       hasCredentials: '',
+      msg: {},
     }
   },
   getters: {
@@ -46,6 +47,9 @@ export default {
     },
     biometryType(state) {
       return state.biometryType
+    },
+    getMsg(state) {
+      return state.msg
     }
   },
   mutations: {
@@ -77,6 +81,9 @@ export default {
       window.localStorage.setItem('isSigned', '')
       window.localStorage.setItem('isLogged', '')
     },
+    setMsg(state, msg) {
+      state.msg = msg
+    }
   },
   actions: {
     
@@ -85,7 +92,7 @@ export default {
       getters,
       dispatch
     }, user) {
-
+      commit('setLoading', true)
       let isSigned = '1';
       FirebaseAuthentication.createUserWithEmailAndPassword({
           email: user.email,
@@ -116,6 +123,7 @@ export default {
         });
 
       commit('updateSigned', isSigned)
+      commit('setLoading', false)
     },
 
     async setCredentials({commit}, user) {
@@ -124,6 +132,7 @@ export default {
     },
 
     async logInWithEmailAndPassword(ctx, user) {
+      ctx.commit('setLoading', true)
       let isLogged = ''
       let result = await FirebaseAuthentication.signInWithEmailAndPassword({
           email: user.email,
@@ -154,6 +163,7 @@ export default {
         });
 
       ctx.commit('updateLogged', isLogged)
+      ctx.commit('setLoading', false)
       return result;
     },
 
@@ -196,8 +206,8 @@ export default {
       return type
     },
 
-    async performBiometricVerificatin({state}) {
-
+    async performBiometricVerificatin({state, commit}) {
+      commit('setLoading', true)
       const verified = await NativeBiometric.verifyIdentity({
           reason: "Для более простого входа",
           title: state.biometryType.name,
@@ -207,11 +217,13 @@ export default {
 
       if (!verified) {
         alert("Биометрия не идентифицирована.\n\nИспользуйте другой способ входа или попробуйте еще раз.");
+        commit('setLoading', false)
         return;
       }
       const credentials = await NativeBiometric.getCredentials({
         server: state.server,
       });
+      commit('setLoading', false)
       return credentials;
     },
 

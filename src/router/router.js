@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import store from '@/store/store'
 import LoginPage from '@/views/LoginPage.vue';
 import PushPage from '@/views/PushPage.vue';
+import MsgPage from '@/views/MsgPage.vue';
 
 
 const routes = [
@@ -16,10 +17,16 @@ const routes = [
         name: 'Login',
         component: LoginPage,
         alias: '/'
-    }, {
+    },
+    {
         path: '/push',
         name: 'Push',
         component: PushPage
+    },
+    {
+        path: '/msg',
+        name: 'Msg',
+        component: MsgPage
     }
 ]
 
@@ -29,18 +36,21 @@ const router = createRouter({
 })
 
 
+
 router.beforeEach((to, from, next) => {
-    const isLogged = store.getters.isLogged
-    //alert(JSON.stringify({isLogged}))
-    // const isLogged = window.localStorage.getItem('isLogged');
-    console.log(isLogged)
-    if (!['Home', 'Login'].includes(to.name) && !isLogged) {
-        alert('Для перехода не эту страницу вам необходимо авторизоваться.')
-        next({
-            name: 'Login'
-        })
-    }
-    else next()
+
+    setTimeout(() => {
+        const isLogged = store.getters.isLogged
+        //alert(JSON.stringify({isLogged}))
+        // const isLogged = window.localStorage.getItem('isLogged');
+        console.log(isLogged)
+        if (!['Home', 'Login', 'Msg'].includes(to.name) && !isLogged) {
+            alert('Для перехода не эту страницу вам необходимо авторизоваться.')
+            next({
+                name: 'Login'
+            })
+        } else next()
+    }, 0);
 })
 
 export default router 

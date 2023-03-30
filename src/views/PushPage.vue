@@ -91,12 +91,13 @@ export default {
             const ACCESS_TOKEN =
                 "key=AAAAczkkdTk:APA91bG3gFEALwglHyMkFReUpOGmK38qQFCqJ1uerVqxP5buPJb33ZcWvB0LrTfmWks5hdjdlv6WujZxJO79-Frk6EdIcxKq6nCPCWDm36U8xlc2yoL6Ywt-Exo80njbSkHLO0mhV7GV";
             const pushMsg = this.pushMsg
+            const image = 'https://www.verdrug.ru/assets/cache_image/assets/mgr/images/stati/kroliki/dekorativnye-kroliki-12-04155912_550hx0_d09.jpg'
             const data = {
                 to: token,
                 "notification": { //object(Notification)
-                    "title": pushMsg.title, // "Тест!",
-                    "body": pushMsg.text, //"Текст тестового сообщения.",
-                    // "image": image
+                    "title": pushMsg.title, 
+                    "body": pushMsg.text, 
+                    "image": image
                 },
                 "android": { //object(AndroidConfig)
                     // "priority": "HIGH", //enum(AndroidMessagePriority) NORMAL HIGH
@@ -116,6 +117,11 @@ export default {
                     },
                     // "direct_boot_ok": true
                 },
+                data: {
+                    "title": pushMsg.title, // "Тест!",
+                    "body": pushMsg.text, //"Текст тестового сообщения.",
+                    "image": image
+                }
             };
 
             fetch("https://fcm.googleapis.com/fcm/send", {

@@ -62,7 +62,7 @@ export default {
   },
   methods: {
     ...mapActions(['logInWithEmailAndPassword', 'clearNativeBiometric', 'logOut', 'performBiometricVerificatin']),
-    ...mapMutations(['updateSigned']),
+    ...mapMutations(['updateSigned', ]),
     async logIn(user) {
       const result = await this.logInWithEmailAndPassword(user)
       if (!result) {

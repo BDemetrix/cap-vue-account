@@ -51,13 +51,15 @@ export default {
   },
   methods: {
     ...mapActions(['signUp']),
-    ...mapMutations(['updateSigned']),
-    subscribe() {
+    ...mapMutations(['updateSigned', 'setLoading']),
+    async subscribe() {
       if (this.user.password !== this.user.repPassword) {
         alert("пароли не совпадают!");
         return;
       }
-      this.signUp(this.user)
+      //this.setLoading(true)
+      await this.signUp(this.user)
+      //this.setLoading(false)
     },
     toLogin() {
       this.updateSigned('1')
