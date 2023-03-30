@@ -11,5 +11,8 @@
     "PushNotifications": {
       "presentationOptions": ["badge", "sound", "alert"]
     }
+  },
+  "server": {
+    "allowNavigation": ["fcm.googleapis.com"]
   }
 }

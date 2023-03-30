@@ -260,6 +260,12 @@ https://www.npmjs.com/package/capacitor-native-biometric
 Сообщение для отправки облачной службой обмена сообщениями Firebase
 https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages?hl=ru
 
+**! Чтобы отправлялись POST запросы на сервер firebase из iOS надо добавить в capacitor.config.json**
+```
+"server": {
+    "allowNavigation": ["fcm.googleapis.com"]
+}
+```
 
 ### Ошибки 
 1. Redefinition of module 'Firebase' 
