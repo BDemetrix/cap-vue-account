@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:494879929657:android:49becd6d4f9993cb6fe4e8",
+        "mobilesdk_app_id": "1:494879929657:android:ee02cafae2272ec76fe4e8",
         "android_client_info": {
-          "package_name": "com.example.app"
+          "package_name": "com.CapVueAcc.app"
         }
       },
       "oauth_client": [
@@ -30,6 +30,13 @@
             {
               "client_id": "494879929657-2v3nre413mbf43l3jnrab2orar2o7lmp.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "494879929657-ekms9e7mgq3rbvbojgp99ghlphnaldel.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.app"
+              }
             }
           ]
         }

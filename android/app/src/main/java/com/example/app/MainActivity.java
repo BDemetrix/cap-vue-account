@@ -1,4 +1,4 @@
-package com.example.app;
+package com.CapVueAcc.app;
 
 import com.getcapacitor.BridgeActivity;
 

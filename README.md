@@ -175,10 +175,10 @@ https://console.firebase.google.com/?hl=ru
 ! При сборке capacitorjs или другим фреймворком НЕ ДОБАВЛЯТЬ в Xcode > File > Add Packages (описано в инструкции по предыдущей ссылке). Добавление приводит к ошибке `Redefinition of module 'Firebase'`
 
 #### Добавление приложения Android в firebase
-https://console.firebase.google.com/project/cap-vue-account/settings/general/android:com.example.app?hl=ru
+https://console.firebase.google.com/project/cap-vue-account/settings/general/android:com.CapVueAcc.app?hl=ru
 
 #### Добавление приложения iOS в firebase
-https://console.firebase.google.com/project/cap-vue-account/settings/general/ios:com.example.app?hl=ru
+https://console.firebase.google.com/project/cap-vue-account/settings/general/ios:com.CapVueAcc.app?hl=ru
 ! При сборке capacitorjs или другим фреймворком НЕ ДОБАВЛЯТЬ в Xcode > File > Add Packages (описано в инструкции по предыдущей ссылке). Добавление приводит к ошибке `Redefinition of module 'Firebase'`
 
 ! Для отправления пушей через firebase для устройств Apple  
@@ -229,7 +229,7 @@ https://www.npmjs.com/package/@capacitor-firebase/messaging
 Выполнить действия  
 https://i.stack.imgur.com/FbQDL.png
 
-Для этог надо скачать и установить сертификат со своего аккаунта разработчика  
+Для этого надо скачать и установить сертификат со своего аккаунта разработчика  
 ![image](https://user-images.githubusercontent.com/64604742/223456786-73297605-9eab-4361-bbb3-c68022398c19.png)
 
 
@@ -277,6 +277,7 @@ https://developer.apple.com/
 Надо их получить.  
 https://fmaxx.github.io/ios/provisioning/2017/08/20/ios-provisioning-part-1.html  
 https://fmaxx.github.io/ios/provisioning/2017/08/30/ios-provisioning-part-2.html
+https://habr.com/ru/post/280626/
 
 ### Релиз в App Store
 https://habr.com/ru/company/touchinstinct/blog/341858/
@@ -364,6 +365,10 @@ chrome://flags/#unsafely-treat-insecure-origin-as-secure
 ```npx cap init```
 
 ```npm install @capacitor/ios @capacitor/android```  
+  
+До выполнения следующих установок необходимо файле в `capacitor.config.json` в поле appId указать BundleId приложения.  
+(особенно важно для iOS, этот же BundleId надо будет указывать при получении сертификатов и профилей)  
+
 ```npx cap add ios```  
 ```npx cap add android```
 

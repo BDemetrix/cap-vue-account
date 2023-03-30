@@ -100,7 +100,7 @@ export default {
                 },
                 "android": { //object(AndroidConfig)
                     // "priority": "HIGH", //enum(AndroidMessagePriority) NORMAL HIGH
-                    // "restricted_package_name": "com.example.app",
+                    // "restricted_package_name": "com.CapVueAcc.app",
                     "data": { // Произвольная полезная нагрузка ("ключ": "значение")
                     },
                     "notification": { //object(AndroidNotification)

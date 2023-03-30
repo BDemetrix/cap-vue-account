@@ -1,5 +1,5 @@
 {
-  "appId": "com.example.app",
+  "appId": "com.CapVueAcc.app",
   "appName": "cap-vue-account",
   "webDir": "dist",
   "bundledWebRuntime": true,

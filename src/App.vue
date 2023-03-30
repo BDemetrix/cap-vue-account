@@ -3,6 +3,7 @@
 </template>
 
 <script>
+import { Capacitor } from "@capacitor/core"
 import { mapMutations, mapActions } from "vuex"
 
 export default {
@@ -33,6 +34,7 @@ export default {
     // this.logOut()
     // this.updateToken('')
     // this.upFcmSigned('')
+    alert(Capacitor.getPlatform())
   }
 };
 </script>
