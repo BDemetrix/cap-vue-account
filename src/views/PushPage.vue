@@ -62,6 +62,7 @@ export default {
     methods: {
         ...mapActions(['addListeners', 'registerNotifications']),
         ...mapMutations(['updateLogged', 'upFcmSigned', 'updateToken']),
+        ...mapGetters(['fcmSigned', 'token']),
 
         regNotifications() {
             //alert('Начало подписки')
@@ -102,7 +103,10 @@ export default {
                 "android": { //object(AndroidConfig)
                     // "priority": "HIGH", //enum(AndroidMessagePriority) NORMAL HIGH
                     // "restricted_package_name": "com.CapVueAcc.app",
-                    "data": { // Произвольная полезная нагрузка ("ключ": "значение")
+                    data: {
+                        "title": pushMsg.title, // "Тест!",
+                        "body": pushMsg.text, //"Текст тестового сообщения.",
+                        "image": image
                     },
                     "notification": { //object(AndroidNotification)
                         "title": (pushMsg.title + "Android"),
@@ -151,7 +155,7 @@ export default {
         },
     },
     computed: {
-        ...mapGetters(['fcmSigned', 'token'])
+        
     },
     mounted() {
         const savedFcmSigned = !!window.localStorage.getItem("fcmSigned")

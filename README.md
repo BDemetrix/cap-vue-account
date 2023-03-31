@@ -392,3 +392,8 @@ https://capacitorjs.com/docs/web
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## Ссылки на бандлы
+-- iOS  https://disk.yandex.ru/d/hvyHGR5033JbUQ  
+-- Android https://disk.yandex.ru/d/K5zlFRTWmnXaOw

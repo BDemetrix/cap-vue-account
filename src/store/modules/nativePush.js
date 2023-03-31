@@ -82,7 +82,7 @@ export default {
                     if (data.title) {
                         commit('setMsg', data);
                         commit('updateLogged', '1');
-                        router.push({ path: '/msg' })
+                        router.push({ name: 'Msg' })
                         // alert(JSON.stringify(notification))
                     }
                 }
@@ -94,21 +94,4 @@ export default {
             console.log("delivered notifications", JSON.stringify(notificationList));
         },
     }
-
-
-    /* {
-        "actionId": "tap",
-        "notification": {
-            "id": "0:1680192434178669%3f96d2733f96d273",
-            "data": {
-                "google.delivered_priority": "high",
-                "google.sent_time": "1680192402562",
-                "google.ttl": "2419200",
-                "google.original_priority": "high",
-                "from": "494879929657",
-                "gcm.n.analytics_data": "Bundle[mParcelledData.dataSize=356]",
-                "collapse_key": "com.CapVueAcc.app"
-            }
-        }
-    } */
 }
